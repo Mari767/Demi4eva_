@@ -1,30 +1,33 @@
-﻿#include <iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
 #include <stdio.h>
+#include <math.h>
 // найти корни квадратного уравнения
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	double a, b, c, x, y, D, a2, x1, x2;
-	printf("Введите a, b и c  \na=");
-	scanf_s("%lf", &a);
-	printf("b=");
-	scanf_s("%lf", &b);
-	printf("c=");
-	scanf_s("%lf\n", &c);
 	
-
-	//a = 3, b = -5, c = -7.4;
+	double a, b, c, a2, x1, x2;
+	double D;
+	printf("\nВведите a, b и c  \na=");
+	scanf("%lf", &a);
+	printf("b=");
+	scanf("%lf", &b);
+	printf("c=");
+	scanf("%lf", &c);
+	
 	// формулы решения
 	a2 = 2 * a;
-	D = sqrt(b * b - 4 * a * c);
-	if (D < 0){
-	     printf("x не существует");
+	D = (b * b - 4 * a * c);
+	if (D < 0) {
+		printf("'\nx не существует");
 	}
-	else {
-		x1 = (-b - D) / a2;
-		x2 = (-b + D) / a2;
-		printf("x1=%.2lf \nx2=%.2lf\n", x1, x2);
-	}
+	else
+	D = (b * b - 4 * a * c);
+	x1 = (-b - sqrt(D) )/ a2;
+	x2 = (-b + sqrt(D) )/ a2;
+	printf("\nx1=%.2lf \nx2=%.2lf\n", x1, x2);
+
 	return main();
 }
 
