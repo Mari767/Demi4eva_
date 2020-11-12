@@ -25,6 +25,6 @@ int main()
 		x2 = (-b + D) / a2;
 		printf("x1=%.2lf \nx2=%.2lf\n", x1, x2);
 	}
-	
+	return main();
 }
 
