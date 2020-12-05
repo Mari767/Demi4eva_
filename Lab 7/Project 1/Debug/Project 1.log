@@ -1,0 +1,5 @@
+﻿  Project 1.cpp
+C:\Users\mdemi\source\repos\Mari767\Demi4eva_\Lab 7\Project 1\Project 1.cpp(32,10): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\mdemi\source\repos\Mari767\Demi4eva_\Lab 7\Project 1\Project 1.cpp(36,8): warning C4244: =: преобразование "double" в "short", возможна потеря данных
+C:\Users\mdemi\source\repos\Mari767\Demi4eva_\Lab 7\Project 1\Project 1.cpp(6,12): warning C4101: p: неиспользованная локальная переменная
+  Project 1.vcxproj -> C:\Users\mdemi\source\repos\Mari767\Demi4eva_\Lab 7\Debug\Project 1.exe

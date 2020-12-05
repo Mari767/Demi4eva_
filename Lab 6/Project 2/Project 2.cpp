@@ -9,7 +9,7 @@ int main() {
 	srand(time(NULL));
 
 
-	int a, n, b;// human's number
+	int a, n, b;// a=human's number
 	b=rand() % 100;//computer's number
 
 	printf("Привет. Давай сыграем с тобой в игру.  Я загадал число от 0 до 100. Попробуй отгадать.\n");
