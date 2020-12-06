@@ -83,6 +83,5 @@ int main()
             cout << setw(4) << mas_b[i][j];
         }cout << endl;
     }
-
     return 0;
 }
