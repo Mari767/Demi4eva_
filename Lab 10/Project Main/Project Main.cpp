@@ -39,8 +39,6 @@ int main() {
 	return 0;
 }
 
-
-
 void changarray(int mas[]) {
 	int i, j, k;
 	int mas1[N][M];
@@ -53,13 +51,6 @@ void changarray(int mas[]) {
 			cout << setw(4) << mas1[i][j];
 		}cout << endl;
 	}cout << endl;
-
-
-	/*for (i = 0; i < N; i++) {
-		for (j = 0; j < M; j++) {
-			cout << setw(4) << mas1[i][j];
-		}cout << endl;
-	}cout << endl;*/
 
 	cout << "Зеркальное отображение матрицы по горизонтали" << endl;
 	int t;   
@@ -80,11 +71,7 @@ void changarray(int mas[]) {
 	for (i = 0; i < N; i++) {  // Пребразование двумерного мас. в одномерный
 		for (j = 0; j < M; j++) {
 			mas[i * M + j] = mas1[i][j];
-			//cout << setw(4) << mas2[i * M + j];
 		}
 	}
-	/*for (i = 0; i < N * M; i++) { //  Печать измененного массива 
-		cout << setw(4) << mas[i];
-	}cout << endl;*/
 	return;
 }
