@@ -19,7 +19,7 @@ int main() {
 
 	cout << a << comparing(a, b)<<  b << endl<<endl;
 
-	return main();
+	return 0;
 }
 
 char comparing(int a, int b) {

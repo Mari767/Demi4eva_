@@ -19,9 +19,8 @@ int main() {
 	
 	int i, j;
 	int a = 0;
-	/*const int N = 3;
-	const int M = 5;*/
 	int mas0[N * M];
+
 	cout << "Массив напечатанный из основной программы:" << endl;
 	for (i = 0; i < N * M; i++) {
 		mas0[i] = i + 1;
