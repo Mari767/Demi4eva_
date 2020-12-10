@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+using namespace std;
 #define N 15
 #define M 50// rezerv
 int mask[M];
@@ -58,7 +59,7 @@ int main() {
 			for (i = 0; i < N; i++) {//     Печать изначального масиива
 				printf("%4d", mas[i]);
 			}
-			printf("\nИндексы элементов      ");
+			printf("\nИндексы элементов: ");
 			for (i = 1; i < N + 1; i++) {//     Печать индексов
 				printf("%4d", i);
 			}
@@ -67,6 +68,10 @@ int main() {
 		printf("С какой позиции ");
 		scanf_s("%d", &k_);
 		k_ = k_ - 1;
+		if (k_ > N||k_<1) {
+			cout << "Такой позиции нет." << endl;
+			break;
+		}
 		printf("\nПервоначальный массив: ");
 		for (i = 0; i < N; i++) {
 			printf("%4d", mas[i]);
