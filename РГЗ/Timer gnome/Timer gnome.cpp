@@ -1,10 +1,11 @@
 ﻿#include <chrono>
+#include <algorithm>
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
 #include <iomanip>
 #define N 45
-#define P 101
+#define P 120
 
 using namespace std;
 
@@ -59,15 +60,13 @@ int main()
 	}
 	double sum = 0;
 	double result;
-	
-	
-	
-	
-	for (int u = 1; u < P; u++) {
+	sort(time, time + P);
+
+	for (int u = 10	; u < P-10; u++) {
 		sum += time[u];
 	}
 	cout << "Sum" <<sum << endl;
-	result = sum / (P - 1);
+	result = sum / (P - 20);
 	cout << "Result " <<result << endl;
 }
 

@@ -1,10 +1,11 @@
 ﻿#include <iostream>
 #include <chrono>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 #define N 5
-#define P 101
+#define P 120
 
 void Child(int arr[], int n, int i);
 void heapSort(int arr[], int n);
@@ -81,11 +82,14 @@ int main() {
     }
     double sum = 0;
     double result;
-    for (int u = 1; u < P; u++) {
+    sort(time, time + P);
+
+    for (int u = 10; u < P - 10; u++) {
         sum += time[u];
     }
+    
     cout << "Sum" << sum << endl;
-    result = sum / (P - 1);
+    result = sum / (P - 20);
     cout << "Result " << result << endl;
 
 }
