@@ -78,7 +78,7 @@ int main() {
 			for (i = 0; i < k_; i++) {
 				printf("%4d", mas[i]);
 			}
-			cout << endl << "Удалено "<<p<<" элементов" << endl;
+			cout << endl << "Удалено только "<<p<<" элемент(ов)" << endl;
 			break;
 		}
 		printf("\nПервоначальный массив: ");
