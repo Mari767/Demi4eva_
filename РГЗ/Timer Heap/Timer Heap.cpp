@@ -4,35 +4,11 @@
 #include <algorithm>
 
 using namespace std;
-#define N 5
-#define P 120
+#define N 45
+#define P 820
 
 void Child(int arr[], int n, int i);
 void heapSort(int arr[], int n);
-class Timer
-{
-private:
-    // Псевдонимы типов используются для удобного доступа к вложенным типам
-    using clock_t = chrono::high_resolution_clock;
-    using second_t = chrono::duration< double, ratio<1> >;
-
-    chrono::time_point<clock_t> m_beg;
-
-public:
-    Timer() : m_beg(clock_t::now())
-    {
-    }
-
-    void reset()
-    {
-        m_beg = clock_t::now();
-    }
-
-    double elapsed() const
-    {
-        return chrono::duration_cast<second_t>(clock_t::now() - m_beg).count();
-    }
-};
 
 int main() {
     
@@ -45,15 +21,14 @@ int main() {
 
     for (int u = 0; u < P; u++) {
 
-        //cout << "Упорядоченный массив: " << endl;
-        for (i = 0; i < N; i++) {
-            arr[i] = i + 1;
-        }
-
-        auto start = chrono::high_resolution_clock::now();
-        heapSort(arr, n); //вызов функции сортировки
-        auto end = chrono::high_resolution_clock::now();
-        chrono::duration<double> duration = end - start;
+        ////cout << "Упорядоченный массив: " << endl;
+        //for (i = 0; i < N; i++) {
+        //    arr[i] = i + 1;
+        //}
+        //auto start = chrono::high_resolution_clock::now();
+        //heapSort(arr, n); //вызов функции сортировки
+        //auto end = chrono::high_resolution_clock::now();
+        //chrono::duration<double> duration = end - start;
 
 
 
@@ -69,13 +44,13 @@ int main() {
 
 
         ////cout << "\nНеотсортированный массив: " << endl;
-        //for (i = 0; i < N; i++) {//ввод массива
-        //	arr[i] = rand() % 100 - 30;
-        //}
-        //auto start = chrono::high_resolution_clock::now();
-        //heapSort(arr, n); //вызов функции сортировки
-        //auto end = chrono::high_resolution_clock::now();
-        //chrono::duration<double> duration = end - start;
+        for (i = 0; i < N; i++) {//ввод массива
+        	arr[i] = rand() % 100 - 30;
+        }
+        auto start = chrono::high_resolution_clock::now();
+        heapSort(arr, n); //вызов функции сортировки
+        auto end = chrono::high_resolution_clock::now();
+        chrono::duration<double> duration = end - start;
 
         time[u] = duration.count();;
         cout << u << "   " << time[u] << endl;
@@ -91,7 +66,7 @@ int main() {
     cout << "Sum" << sum << endl;
     result = sum / (P - 20);
     cout << "Result " << result << endl;
-
+    return 0;
 }
 
 void Child(int arr[], int n, int i)

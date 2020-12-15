@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #define N 45
-#define P 120
+#define P 820
 
 using namespace std;
 
@@ -22,19 +22,19 @@ int main()
 	double time[P];
 	for (int u = 0; u < P; u++) {
 
-		//cout << "Упорядоченный массив: " << endl;
-		for (i = 0; i < N; i++) {
-			mas[i] = i + 1;
-		}
+		////cout << "Упорядоченный массив: " << endl;
+		//for (i = 0; i < N; i++) {
+		//	mas[i] = i + 1;
+		//}
 
-		auto start = chrono::high_resolution_clock::now();
-		Gnome_sort(mas); //вызов функции сортировки
-		auto end = chrono::high_resolution_clock::now();
-		chrono::duration<double> duration = end - start;
+		//auto start = chrono::high_resolution_clock::now();
+		//Gnome_sort(mas); //вызов функции сортировки
+		//auto end = chrono::high_resolution_clock::now();
+		//chrono::duration<double> duration = end - start;
 		
 		
 
-		//cout << "\nМассив, упорядоченный в обратном порядке: " << endl;
+		////cout << "\nМассив, упорядоченный в обратном порядке: " << endl;
 		//int a = 1;
 		//for (i = 0; i < N; i++) {//ввод массива
 		//	mas[i] = N - i;
@@ -46,14 +46,14 @@ int main()
 		
 
 
-		////cout << "\nНеотсортированный массив: " << endl;
-		//for (i = 0; i < N; i++) {//ввод массива
-		//	mas[i] = rand() % 100 - 30;
-		//}
-		//auto start = chrono::high_resolution_clock::now();
-		//Gnome_sort(mas); //вызов функции сортировки
-		//auto end = chrono::high_resolution_clock::now();
-		//chrono::duration<double> duration = end - start;
+		//cout << "\nНеотсортированный массив: " << endl;
+		for (i = 0; i < N; i++) {//ввод массива
+			mas[i] = rand() % 100 - 30;
+		}
+		auto start = chrono::high_resolution_clock::now();
+		Gnome_sort(mas); //вызов функции сортировки
+		auto end = chrono::high_resolution_clock::now();
+		chrono::duration<double> duration = end - start;
 	
 		time[u] = duration.count();;
 		cout << u << "   " << time[u] << endl;
@@ -68,6 +68,7 @@ int main()
 	cout << "Sum" <<sum << endl;
 	result = sum / (P - 20);
 	cout << "Result " <<result << endl;
+	return 0;
 }
 
 void Gnome_sort(int mas[]) {
@@ -84,8 +85,5 @@ void Gnome_sort(int mas[]) {
 			if (i == 0) { i = j; j++; }
 		}
 	}
-	//cout << "Отсортированный массив : " << endl;
-	//for (i = 0; i < N; i++) {//вывод массива
-	//	cout << setw(4) << mas[i];
-	//}
+	return;
 }
