@@ -20,7 +20,7 @@ struct information {
     char typ;        //Тип
     float nom;       //Номинал
     int colvo;       //Количество
-    short sort;
+    short sort;      //Длинна строки(для сортировки)
 }vedom[10];
 
 int main() {
@@ -94,7 +94,7 @@ void Rand(int N) {
     for (int i = 0; i < N; i++) {
         int Randsign = rand() % 21;
         vedom[i].name = masname[Randsign];
-        vedom[i].typ = randomRange('a', 'z');
+        vedom[i].typ = 'A' + rand() % ('Z' - 'A');
         vedom[i].nom = rand() % 1000;
         vedom[i].colvo = rand() % 100;
     }
