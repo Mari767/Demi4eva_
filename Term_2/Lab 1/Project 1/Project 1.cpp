@@ -5,8 +5,7 @@
 #include <iomanip>
 #include <stdio.h>
 #include <string>
-#include <ctime>
-#include <cstdlib>
+
 using namespace std;
 
 int Screen();
