@@ -11,7 +11,6 @@ using namespace std;
 
 int Screen();
 void Rand(int N);
-int randomRange(int low, int high);
 void Print(int N);
 void Sort(int N);
 
@@ -101,10 +100,6 @@ void Rand(int N) {
     cout << "Массив заполнен." << endl;
     cout << "Выберите дальнейшее действие.\n" << endl;
 }
-int randomRange(int low, int high) {
-    return rand() % (high - low + 1) + low;
-}
-
 void Print(int N) {
     cout << setiosflags(ios::left);
     cout << "----------------------------------------------" << endl;
