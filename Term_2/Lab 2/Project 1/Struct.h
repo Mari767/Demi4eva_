@@ -1,10 +1,11 @@
-#pragma once
+#ifndef STRUCT_H_
+#define STRUCT_H_
 
-#include <iostream>
-#include <iomanip>
-#include <stdio.h>
-#include <string>
+/*#ifndef B
 #define B 10
+#endif*/ 
+#include <string>
+
 
 using namespace std;
 
@@ -14,9 +15,5 @@ struct information {
 	float nom;       //Номинал
 	int colvo;       //Количество
 	short sort;      //Длинна строки(для сортировки)
-}vedom[B];
-
-int Screen();
-void Rand(int N);
-void Print(int N);
-void Sort(int N);
+}vedom[10];
+#endif 

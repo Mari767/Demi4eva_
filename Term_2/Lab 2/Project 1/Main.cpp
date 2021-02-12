@@ -5,11 +5,13 @@
 1) текущую дату и время;
 2) имя текущего файла и текущей функции.*/
 
-#include "include.h"
+using namespace std;
+#include "Function.h"
+
 
 int main() {
     setlocale(LC_ALL, "ru");
-    srand(time(NULL));
+    srand(time_t(NULL));
     int a;
     int N;
     do {
