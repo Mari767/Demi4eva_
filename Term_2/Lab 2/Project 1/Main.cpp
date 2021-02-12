@@ -8,7 +8,6 @@
 using namespace std;
 #include "Function.h"
 
-
 int main() {
     setlocale(LC_ALL, "ru");
     srand(time_t(NULL));
@@ -44,6 +43,3 @@ int main() {
     } while (a != 5);
 return 0;
 }
-
-
-

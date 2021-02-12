@@ -1,12 +1,7 @@
 #ifndef STRUCT_H_
 #define STRUCT_H_
 
-/*#ifndef B
-#define B 10
-#endif*/ 
 #include <string>
-
-
 using namespace std;
 
 struct information {

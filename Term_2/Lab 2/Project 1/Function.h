@@ -41,8 +41,6 @@ void Rand(int N) {
     cout << "Массив заполнен." << endl;
     cout << "Выберите дальнейшее действие.\n" << endl;
 }
-
-
 void Print(int N) {
 
     if (vedom[0].name != "") {
@@ -62,8 +60,6 @@ void Print(int N) {
         cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
     }
 }
-
-
 void Sort(int N) {
 
     if (vedom[0].name != "") {
@@ -87,5 +83,4 @@ void Sort(int N) {
         cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
     }return;
 }
-
 #endif
