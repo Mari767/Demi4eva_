@@ -139,8 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Include.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="F_Enter_console.cpp" />
+    <ClCompile Include="F_Enter_rand.cpp" />
+    <ClCompile Include="F_Sort.cpp" />
+    <ClCompile Include="F_Print.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
