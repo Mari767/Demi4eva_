@@ -1,13 +1,26 @@
 #pragma once
+#ifndef FUNCTION_H_
+#define FUNCTION_H_
 
 #include <iostream>
 #include <iomanip>
 #include <stdio.h>
+#include "Struct.h"
+#define PRINT_TYPE 2   
+//#define PRINT_TYPE 1  //enter with console 
+//#define PRINT_TYPE 2  // random enter 
 
 using namespace std;
-#include "Struct.h"
-#ifndef FUNCTION_H_
-#define FUNCTION_H_
+int Screen();
+void Rand();
+void Enter_table() {
+#if PRINT_TYPE == 1
+    Screen();
+#else
+    Rand();
+#endif
+}
+
 int Screen() {
     //Ввод данных вручную
     int N;
@@ -27,11 +40,12 @@ int Screen() {
     cout << "Выберите дальнейшее действие.\n" << endl;
     return N;
 }
-void Rand(int N) {
+
+void Rand() {
     //Ввод рандомайзером
     string masname[] = { "RT-11-24", "CGU-12K", "YIR-15", "NO-3", "MNU-8", "OP-20", "ST", "P", "BORR", "GHJ-0", "POR-H", "PRTYMB-2", "CGU-RT-12", "TURP-08" , "BUTMB-K", "PTK", "RTY", "BROM-6", "BERMUDO", "AHJU", "Rip-.." };
-
-    for (int i = 0; i < N; i++) {
+    N = B;
+    for (int i = 0; i < B; i++) {
         int Randsign = rand() % 21;
         vedom[i].name = masname[Randsign];
         vedom[i].typ = 'A' + rand() % ('Z' - 'A');
@@ -40,25 +54,6 @@ void Rand(int N) {
     }
     cout << "Массив заполнен." << endl;
     cout << "Выберите дальнейшее действие.\n" << endl;
-}
-void Print(int N) {
-
-    if (vedom[0].name != "") {
-        cout << setiosflags(ios::left); //Для вывода по левую сторону, ровный вывод
-        cout << "----------------------------------------------" << endl;
-        cout << "|         Ведомость комплектующих            |" << endl;
-        cout << "|--------------------------------------------|" << endl;
-        cout << "| Обозначение | Тип |  Номинал  | Количество |" << endl;
-        cout << "|-------------|-----|-----------|------------|" << endl;
-        for (int i = 0; i < N; i++) {
-            cout << "|" << setw(13) << vedom[i].name << "|" << setw(5) << vedom[i].typ << "|" << setw(11) << vedom[i].nom << "|" << setw(12) << vedom[i].colvo << "|" << endl;
-            cout << "|--------------------------------------------|" << endl;
-        }
-        cout << "Выберите дальнейшее действие.\n" << endl;
-    }
-    else {
-        cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
-    }
 }
 void Sort(int N) {
 
@@ -82,5 +77,24 @@ void Sort(int N) {
     else {
         cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
     }return;
+}
+void Print(int N) {
+
+    if (vedom[0].name != "") {
+        cout << setiosflags(ios::left); //Для вывода по левую сторону, ровный вывод
+        cout << "----------------------------------------------" << endl;
+        cout << "|         Ведомость комплектующих            |" << endl;
+        cout << "|--------------------------------------------|" << endl;
+        cout << "| Обозначение | Тип |  Номинал  | Количество |" << endl;
+        cout << "|-------------|-----|-----------|------------|" << endl;
+        for (int i = 0; i < N; i++) {
+            cout << "|" << setw(13) << vedom[i].name << "|" << setw(5) << vedom[i].typ << "|" << setw(11) << vedom[i].nom << "|" << setw(12) << vedom[i].colvo << "|" << endl;
+            cout << "|--------------------------------------------|" << endl;
+        }
+        cout << "Выберите дальнейшее действие.\n" << endl;
+    }
+    else {
+        cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
+    }
 }
 #endif
