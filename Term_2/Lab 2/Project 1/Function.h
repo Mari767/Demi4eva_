@@ -1,6 +1,7 @@
 #pragma once
 #ifndef FUNCTION_H_
 #define FUNCTION_H_
+#define DEBUG
 
 #include <iostream>
 #include <iomanip>
@@ -38,9 +39,16 @@ int Screen() {
     }
     cout << "Массив заполнен." << endl;
     cout << "Выберите дальнейшее действие.\n" << endl;
+#ifdef DEBUG
+    cout <<"Дата: "<< __DATE__ << endl;
+    cout <<"Время  " << __TIME__ << endl;
+    cout <<"Имя текущего файла " << __FILE__ << endl;
+    cout <<"Имя текущей функции " << __FUNCTION__ << endl;
+    cout << endl << endl;
+#endif  // DEBUG
     return N;
-}
 
+}
 void Rand() {
     //Ввод рандомайзером
     string masname[] = { "RT-11-24", "CGU-12K", "YIR-15", "NO-3", "MNU-8", "OP-20", "ST", "P", "BORR", "GHJ-0", "POR-H", "PRTYMB-2", "CGU-RT-12", "TURP-08" , "BUTMB-K", "PTK", "RTY", "BROM-6", "BERMUDO", "AHJU", "Rip-.." };
@@ -53,7 +61,14 @@ void Rand() {
         vedom[i].colvo = rand() % 100;
     }
     cout << "Массив заполнен." << endl;
-    cout << "Выберите дальнейшее действие.\n" << endl;
+    cout << "Выберите дальнейшее действие.\n" << endl; 
+#ifdef DEBUG
+    cout << "Дата: " << __DATE__ << endl;
+    cout << "Время: " << __TIME__ << endl;
+    cout << "Имя текущего файла " << __FILE__ << endl;
+    cout << "Имя текущей функции " << __FUNCTION__ << endl << endl << endl;
+#endif // DEBUG
+    return;
 }
 void Sort(int N) {
 
@@ -73,6 +88,12 @@ void Sort(int N) {
         }
         cout << "Массив отсортирован." << endl;
         cout << "Выберите дальнейшее действие.\n" << endl;
+#ifdef DEBUG
+        cout << "Дата: " << __DATE__ << endl;
+        cout << "Время: " << __TIME__ << endl;
+        cout << "Имя текущего файла " << __FILE__ << endl;
+        cout << "Имя текущей функции " << __FUNCTION__ << endl << endl << endl;
+#endif  // DEBUG
     }
     else {
         cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
@@ -92,9 +113,17 @@ void Print(int N) {
             cout << "|--------------------------------------------|" << endl;
         }
         cout << "Выберите дальнейшее действие.\n" << endl;
+#ifdef DEBUG
+        cout << "Дата: " << __DATE__ << endl;
+        cout << "Время: " << __TIME__ << endl;
+        cout << "Имя текущего файла " << __FILE__ << endl;
+        cout << "Имя текущей функции " << __FUNCTION__ << endl << endl << endl;
+#endif // DEBUG
     }
     else {
         cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
     }
+
+    return;
 }
 #endif
