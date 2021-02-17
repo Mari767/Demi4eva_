@@ -16,6 +16,14 @@ int main() {
 	srand(time(NULL));
 	cout << "Введите размер массива " << endl;
 	cin >> Size_1;
+	if (Size_1 < 0) {
+		cout << "Некорректный ответ." << endl;
+		return 0;
+	}
+	if (Size_1 == 0) { 
+		cout << "Массив не заполнен." << endl; 
+		return 0;
+	}
 	int Size_2 = Size_1 - 6;
 	int* arr = (int*)malloc(Size_1 * sizeof(int));//  Первый массив
 	Arr_input(arr, Size_1);     //  Заполнение
@@ -38,7 +46,7 @@ int Sum(int *massiv, int Size) {
 }
 void Arr_input(int* array, int Size) {
 	for (int i = 0; i < Size; i++) {
-		array[i] = i+1; /*rand() % 100;*/
+		*(array+i) = i+1; /*rand() % 100;*/
 	}
 }
 void Print(int* array, int Size) {
@@ -46,8 +54,8 @@ void Print(int* array, int Size) {
 		cout << setw(4) << *(array + i);
 	}cout << endl;
 }
-void Arr2_input(int* array1, int* array2, int Size) {
+void Arr2_input(int* array1, int* array2, int Size) {//  передаю  Size_2
 	for (int i = 0; i < Size; i++){
-		array2[i] = array1[i+3];
+		*(array2+i) = *(array1+i+3);
 	}
 }
