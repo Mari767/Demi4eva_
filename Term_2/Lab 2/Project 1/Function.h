@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <stdio.h>
 #include "Struct.h"
-#define PRINT_TYPE 1 
+#define PRINT_TYPE 2 
 //#define PRINT_TYPE 1  //enter with console 
 //#define PRINT_TYPE 2  // random enter 
 
