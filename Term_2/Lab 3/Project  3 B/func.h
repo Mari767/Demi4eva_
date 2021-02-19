@@ -11,7 +11,7 @@ using namespace std;
 void Print(int* massiv, int colvo) {
 	int iter = 0;
 	if (colvo == 0) {
-		cout << " пуст " << endl << endl; // пока ne реализовано ______исправить!!!!!!!
+		cout << " пуст " << endl << endl; 
 		return;
 	}
 	cout << endl;
