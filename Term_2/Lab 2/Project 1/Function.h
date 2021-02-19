@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <stdio.h>
 #include "Struct.h"
-#define PRINT_TYPE 2   
+#define PRINT_TYPE 2  
 //#define PRINT_TYPE 1  //enter with console 
 //#define PRINT_TYPE 2  // random enter 
 
@@ -24,9 +24,8 @@ void Enter_table() {
 
 int Screen() {
     //Ввод данных вручную
-    int N;
     float nomn;// переменная для номинала
-    for (N = 0; ; N++) {
+    for (N=0; ; N++) {
         if (N == 10) {
             cout << "Таблица заполнена. \nВыберите дальнейшее действие.\n" << endl;
             break;
@@ -39,6 +38,7 @@ int Screen() {
     }
     cout << "Массив заполнен." << endl;
     cout << "Выберите дальнейшее действие.\n" << endl;
+    return N;
 #ifdef DEBUG
     cout <<"Дата: "<< __DATE__ << endl;
     cout <<"Время  " << __TIME__ << endl;
@@ -46,8 +46,7 @@ int Screen() {
     cout <<"Имя текущей функции " << __FUNCTION__ << endl;
     cout << endl << endl;
 #endif  // DEBUG
-    return N;
-
+   
 }
 void Rand() {
     //Ввод рандомайзером
