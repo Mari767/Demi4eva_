@@ -21,7 +21,6 @@ void Enter_table() {
     Rand();
 #endif
 }
-
 int Screen() {
     //¬вод данных вручную
     float nomn;// переменна€ дл€ номинала
