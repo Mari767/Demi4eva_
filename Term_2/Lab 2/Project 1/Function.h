@@ -7,21 +7,21 @@
 #include <iomanip>
 #include <stdio.h>
 #include "Struct.h"
-#define PRINT_TYPE 2  
+#define PRINT_TYPE 1 
 //#define PRINT_TYPE 1  //enter with console 
 //#define PRINT_TYPE 2  // random enter 
 
 using namespace std;
-int Screen();
-void Rand();
+int Screen(information Mas);
+void Rand(information Mas);
 void Enter_table() {
 #if PRINT_TYPE == 1
-    Screen();
+    Screen(*vedom);
 #else
-    Rand();
+    Rand(*vedom);
 #endif
 }
-int Screen() {
+int Screen(information Mas) {
     //Ввод данных вручную
     float nomn;// переменная для номинала
     for (N=0; ; N++) {
@@ -47,7 +47,7 @@ int Screen() {
 #endif  // DEBUG
    
 }
-void Rand() {
+void Rand(information Mas) {
     //Ввод рандомайзером
     string masname[] = { "RT-11-24", "CGU-12K", "YIR-15", "NO-3", "MNU-8", "OP-20", "ST", "P", "BORR", "GHJ-0", "POR-H", "PRTYMB-2", "CGU-RT-12", "TURP-08" , "BUTMB-K", "PTK", "RTY", "BROM-6", "BERMUDO", "AHJU", "Rip-.." };
     N = B;
@@ -68,7 +68,7 @@ void Rand() {
 #endif // DEBUG
     return;
 }
-void Sort(int N) {
+void Sort(information Mas, int N) {
 
     if (vedom[0].name != "") {
         struct information a;
@@ -97,7 +97,7 @@ void Sort(int N) {
         cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
     }return;
 }
-void Print(int N) {
+void Print(information Mas, int N) {
 
     if (vedom[0].name != "") {
         cout << setiosflags(ios::left); //Для вывода по левую сторону, ровный вывод

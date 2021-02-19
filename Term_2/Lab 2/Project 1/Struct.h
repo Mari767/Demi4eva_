@@ -2,8 +2,8 @@
 #define STRUCT_H_
 
 #include <string>
-#define B 10
 using namespace std;
+#define B 10
 int N;
 
 struct information {

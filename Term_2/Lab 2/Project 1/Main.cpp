@@ -20,10 +20,10 @@ int main() {
             Enter_table();
             break;
         case 2:  // Сортировка
-            Sort(N);
+            Sort(*vedom, N);
             break;
         case 3:  // Печать
-            Print(N);
+            Print(*vedom, N);
             break;
         case 4:
             break;
