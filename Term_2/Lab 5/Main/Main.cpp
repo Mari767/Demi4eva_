@@ -5,6 +5,11 @@
 //– работа с двумерным массивом, как с двумерным(**А).
 #define Print_1
 #include "Declaration.h"
+#include <stdlib.h>
+#include <windows.h>
+
+//void Input_2(int far** Array, int Size);
+
 
 int main() {
 	setlocale(LC_ALL, "ru");
@@ -18,13 +23,11 @@ int main() {
 		cout << "Размерность матрицы слишком велика." << endl;
 		return 0;
 	}
-	int* Mas = (int*)malloc(Size * Size * sizeof(int));
 	//Заполнение матрицы
 #ifdef Print_1
-	Input_1(Mas, Size);  //  работа с одномерным массивом, как с двумерным(*А);
-#else
-	Input_2(Mas, Size);  //  работа с двумерным массивом, как с двумерным(**А).
-#endif
+	int* Mas = (int*)malloc(Size * Size * sizeof(int));
+	fill( Mas, Size);
+	//Input_1(Mas, Size);  //  работа с одномерным массивом, как с двумерным(*А);
 	//Вывод матрицы
 	for (I = Mas, i = 0; i < Size * Size; i++, I++) {
 		cout << setw(4) << *I;
@@ -33,5 +36,28 @@ int main() {
 		}
 	}
 	free(Mas);
+#else
+	int** Arr;/* указатель на массив указателей */
+	int far** Arr; /* указатель на массив указателей */
+	Arr = (int far**)malloc(Size * sizeof(int*));
+	/* выделение памяти для каждой строки и заполнение массива указателей */
+	for (i = 0; i < Size; i++) {
+		*(Arr++) = (int far*)malloc(Size * sizeof(int));
+	}
+	Input_2(Arr, Size);  //  работа с двумерным массивом, как с двумерным(**А).
+	/* вывод матрицы */
+	for (i = 0; i < Size; i++) {
+		for (int j = 0; j < Size; j++) {
+			cout << setw(4) << Arr[i][j++]; // REMAKE!!!!!
+		}cout << endl;
+	}
+	/* освобождение памяти строк */
+	for (i = 0; i < Size; i++) {
+		free(*(Arr++));
+	}    
+	/* освобождение памяти массива указателей */
+	free(Arr);
+#endif
+
 	return 0;
 }
