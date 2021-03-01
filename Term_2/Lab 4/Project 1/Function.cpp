@@ -1,4 +1,7 @@
-﻿#include "Declare.h"
+﻿#include "Function.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
 int Sum(int* massiv, int Size) { //  Вторая функция // Индивидуальное задание
 	if (Size == 3)

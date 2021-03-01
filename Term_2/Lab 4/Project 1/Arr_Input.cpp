@@ -1,4 +1,6 @@
-#include "Declare.h"
+
+#include <iostream>
+#include <iomanip>
 
 void Arr_input(int* array, int Size) {// Заполнение массива
 	for (int i = 0; i < Size; i++) {

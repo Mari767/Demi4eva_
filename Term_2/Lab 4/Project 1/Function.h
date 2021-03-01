@@ -1,12 +1,6 @@
 #pragma once
-#ifndef DECLARE_H_
-#define DECLARE_H_
-
-#include <iostream>
-#include <iomanip>
-using namespace std;
-
-
+#ifndef FUNCTION_H_
+#define FUNCTION_H_
 
 void Arr_input(int* array, int Size);
 void Print(int* array, int Size);
