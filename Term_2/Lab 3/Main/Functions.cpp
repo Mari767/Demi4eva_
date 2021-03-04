@@ -1,4 +1,4 @@
-#include "Declare.h"
+#include "Functions.h"
 
 int Sum(int* massiv, int Size) {     // сумма части элементов первого массива
 	if (Size == 3)
@@ -14,8 +14,7 @@ void Print(int* array, int Size) {        //  Печать массива
 	for (int i = 0; i < Size; i++) {
 		cout << setw(4) << *(array + i);
 	}cout << endl;
-}
-void Arr2_input(int* array1, int* array2, int Size) { //заполнение массива элементами исходного 
+}void Arr2_input(int* array1, int* array2, int Size) { //заполнение массива элементами исходного 
 	for (int i = 0; i < Size; i++) {        //  передаю  Size_2
 		*(array2 + i) = *(array1 + i + 3);
 	}

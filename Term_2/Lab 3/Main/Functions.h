@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DECLARE_H_
-#define DECLARE_H_
+#ifndef FUNCTIONS_H_
+#define FUNCTIONS_H_
 
 #include <iostream>
 #include <iomanip>

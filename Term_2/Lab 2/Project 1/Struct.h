@@ -1,16 +1,15 @@
+#pragma once
 #ifndef STRUCT_H_
 #define STRUCT_H_
-
-#include <string>
-using namespace std;
 #define B 10
-int N;
+#define M 20
 
+using namespace std;
 struct information {
-	string name;     //Обозначение
+	char name[M] = "";     //Обозначение
 	char typ;        //Тип
 	float nom;       //Номинал
 	int colvo;       //Количество
 	short sort;      //Длинна строки(для сортировки)
 }vedom[B];
-#endif 
+#endif
