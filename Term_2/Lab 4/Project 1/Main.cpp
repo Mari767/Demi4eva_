@@ -7,6 +7,7 @@
 #include <iostream>
 #include <iomanip>
 #include "Function.h"
+#include "Arr_Input.h"
 using namespace std;
 
 int main() {
