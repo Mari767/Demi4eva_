@@ -8,7 +8,7 @@
 #include "Function.h"
 #include <iomanip>
 #include <stdio.h>
-#define PRINT_TYPE 2
+#define PRINT_TYPE 1
 //#define PRINT_TYPE 1  //enter with console 
 //#define PRINT_TYPE 2  // random enter 
 using namespace std;
