@@ -51,7 +51,6 @@ void Rand() {
 	cout << "Имя текущего файла " << __FILE__ << endl;
 	cout << "Имя текущей функции " << __FUNCTION__ << endl << endl << endl;
 #endif // DEBUG
-	return;
 }
 
 int Sort(int N) {
@@ -108,6 +107,5 @@ int Print(int N) {
 	else {
 		cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
 	}
-
 	return N;
 }
