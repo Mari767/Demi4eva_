@@ -27,13 +27,14 @@ int main() {
 		cout << setw(4) << *(mas + i);
 	}
 
-	cout << " \nOтносительный адрес " << endl; 
-	
+	cout << " \nOтносительный адрес " << endl;
+	ptr = mas;
 	for (i = 0, Sum = 0; i < Size; i++) {
 		if (*(ptr + i) < 0) {
 			Sum += *(ptr + i);
 		}
 	}cout << "Sum = " << Sum << endl;
+
 
 	cout << "через абсолютный адрес" << endl;
 	//ptr = mas;
@@ -43,28 +44,52 @@ int main() {
 		}
 	}cout << "Sum = " << Sum << endl;
 
+
 	cout << "Не использовуя индексацию" << endl;
-	for (ptr=mas, Sum = 0; ptr < mas+ Size; ptr++) {
+	for (ptr = mas, Sum = 0; ptr < mas + Size; ptr++) {
 		if (*ptr < 0) {
 			Sum += *ptr;
 		}
 	}cout << "Sum = " << Sum << endl;
 
 
-	free(mas);
-	return 0;
-}
+	cout << "Через массив указателей" << endl;
+	int* Pointer = (int*)malloc(Size * sizeof(int));
+	for (i = 0; i < Size; i++) {
+		*(Pointer + i) = *(mas + i);
+	}
+	for (i = 0, Sum = 0; i < Size; i++) {
+		if (*(Pointer + i) < 0) {
+			Sum += *(Pointer + i);
+		}
+	}cout << "Sum = " << Sum << endl;
 
-////Абсолютная адресация
-//p = A;
-//for (int i = 0; i < N; i++, p++)
-//    cout << *p << " ";
-//
-////Относительная адресация
-//p = A;
-//for (int i = 0; i < N; i++)
-//    cout << *(p + i) << " "; //*(A+i)
-//
-//  //Без индексов (без переменной цикла i)
-//for (p = A; p < A + N; p++)
-//    cout << *p << " ";
+
+	//cout << "через указатель на указатель" << endl;
+	//int** P_ptr = &Pointer;
+	//for (i = 0, Sum = 0; i < Size; i++) {
+	//	if (*(*P_ptr+i) < 0) {
+	//		Sum += *(*P_ptr+i);
+	//	}
+	//}cout << "Sum = " << Sum << endl;
+
+
+
+
+		free(mas);
+		return 0;
+	}
+
+	////Абсолютная адресация
+	//p = A;
+	//for (int i = 0; i < N; i++, p++)
+	//    cout << *p << " ";
+	//
+	////Относительная адресация
+	//p = A;
+	//for (int i = 0; i < N; i++)
+	//    cout << *(p + i) << " "; //*(A+i)
+	//
+	//  //Без индексов (без переменной цикла i)
+	//for (p = A; p < A + N; p++)
+	//    cout << *p << " ";
