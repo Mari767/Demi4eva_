@@ -2,17 +2,18 @@
 //Лабораторная работа № 13 из методички.Двумерный динамический массив и функции
 //Используя директивы процессора реализовать выбор одной из реализованных функций(функция принимает и возвращает массив) :
 //	– работа с одномерным массивом, как с двумерным(*А);
-//– работа с двумерным массивом, как с двумерным(**А).
-#define Print_1
+//  – работа с двумерным массивом, как с двумерным(**А).
 #include "Declaration.h"
-#include <stdlib.h>
 #include <windows.h>
-
-//void Input_2(int far** Array, int Size);
-
+#define Print_1
 
 int main() {
 	setlocale(LC_ALL, "ru");
+	int* Pmas;    /* указатель на начало массива */
+	int Size;    /* размерность матрицы         */
+	int* I;     /* текущий указатель у массиве */
+	int i, j;  /* счетчики элементов*/
+
 	cout << "Ввыедите размерность квадратной матрицы. Размерность не должена привышать числа 24. " << endl;
 	cin >> Size;
 	if (Size < 1) {
@@ -24,40 +25,36 @@ int main() {
 		return 0;
 	}
 	//Заполнение матрицы
-#ifdef Print_1
+#ifdef Print_1   //  работа с одномерным массивом, как с двумерным(*А);
 	int* Mas = (int*)malloc(Size * Size * sizeof(int));
-	fill( Mas, Size);
-	//Input_1(Mas, Size);  //  работа с одномерным массивом, как с двумерным(*А);
+	Input_1(Mas, Size);  
 	//Вывод матрицы
-	for (I = Mas, i = 0; i < Size * Size; i++, I++) {
-		cout << setw(4) << *I;
+	for (i = 0, I = Mas; i < Size * Size; i++, I++) {
+		printf("%3d", *I);
 		if (i % Size == Size - 1) {
-			cout << endl;
+			putchar('\n');
 		}
 	}
 	free(Mas);
-#else
-	int** Arr;/* указатель на массив указателей */
-	int far** Arr; /* указатель на массив указателей */
-	Arr = (int far**)malloc(Size * sizeof(int*));
+#else             //  работа с двумерным массивом, как с двумерным(**А).
+	int** Arr = new int* [Size];
 	/* выделение памяти для каждой строки и заполнение массива указателей */
 	for (i = 0; i < Size; i++) {
-		*(Arr++) = (int far*)malloc(Size * sizeof(int));
+		Arr[i] = new int[Size];
 	}
-	Input_2(Arr, Size);  //  работа с двумерным массивом, как с двумерным(**А).
+	Input_2(Arr, Size);  
 	/* вывод матрицы */
 	for (i = 0; i < Size; i++) {
-		for (int j = 0; j < Size; j++) {
-			cout << setw(4) << Arr[i][j++]; // REMAKE!!!!!
-		}cout << endl;
+		for (j = 0; j < Size; j++) {
+			printf("%3d", *(*(Arr + i) + j));
+		}putchar('\n');
 	}
 	/* освобождение памяти строк */
 	for (i = 0; i < Size; i++) {
-		free(*(Arr++));
-	}    
+		delete[] Arr[i];
+	}
 	/* освобождение памяти массива указателей */
-	free(Arr);
+	delete[] Arr;
 #endif
-
 	return 0;
 }

@@ -4,15 +4,11 @@
 
 #include <iostream>
 #include <iomanip>
-void fill(int* A, int s);
-using namespace std;
-//void Input_1(int* Pmas, int Size);
-//void Input_2(int far** Array, int  Size);  //  работа с двумерным массивом, как с двумерным(**ј).
+
+using namespace std; 
+void Input_1(int* Pmas, int Size);      //  работа с одномерным массивом, как с двумерным(*ј).
+void Input_2(int** Array, int  Size);  //  работа с двумерным массивом, как с двумерным(**ј).
 
 
-int* Pmas;  /* указатель на начало массива */
-int Size;  /* размерность матрицы         */
-int* I;   /* текущий указатель у массиве */
-int i;   /* счетчик элементов*/
 
 #endif
