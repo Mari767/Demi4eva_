@@ -10,15 +10,11 @@
 #include "Function.h"
 
 
-
 int main() {
 	setlocale(LC_ALL, "ru");
 	srand(time(NULL));
 	//объявление указателей на функции сортировки
-	void (*PtrBubble)(int*, int) = Bubble;
-	void (*PtrGnome)(int*, int) = Gnome_sort;
-	void (*PtrHeap)(int*, int) = heapSort;
-	void (*PtrQuick)(int*, int) = Quick;
+	void (*Ptr_Function)(int*, int) = NULL;
 	int Size, i;
 	int a; //Выбор в менюшке
 
@@ -37,30 +33,34 @@ int main() {
 
 	printf("Выберете метод сортировки массива. \n 1->Сортировка пузырьком \n 2->Гномья сортировка \n 3->Пирамидальная сортировка \n 4->Быстрая сортировка\n\n");
 	scanf_s("%d", &a);
-	printf("Исходный массив: \n");
-	Print_massiv(Mas, Size);
+	
 
 	switch (a) {
 	case 1:
-		printf("Сортировка пузырьком\n");
-		Chose_Sort(Mas, Size, PtrBubble);
+		printf("Сортировка пузырьком.\n");
+		Ptr_Function = Bubble;
 		break;
 	case 2:
-		printf("Гномья сортировка\n");
-		Chose_Sort(Mas, Size, PtrGnome);
+		printf("Гномья сортировка.\n");
+		Ptr_Function = Gnome_sort;
 		break;
 	case 3:
-		printf("Пирамидальная сортировка \n");
-		Chose_Sort(Mas, Size, PtrHeap);
+		printf("Пирамидальная сортировка .\n");
+		Ptr_Function =  heapSort;
 		break;
 	case 4:
-		printf("Быстрая сортировка\n");
-		Chose_Sort(Mas, Size, PtrQuick);
+		printf("Быстрая сортировка.\n");
+		Ptr_Function = Quick;
 		break;
-	defalt:
-		printf("Некорректный массив\n");
+	default:
+		printf("Некорректный ответ.\n");
 		return 0;
 	}
+	printf("Исходный массив: \n");
+	Print_massiv(Mas, Size);
+
+	Chose_Sort(Mas, Size, Ptr_Function);  //  Вызываем функцию сортировки массива, записпнную в указатель
+
 	printf("Отсортированный массив: \n");
 	Print_massiv(Mas, Size);
 

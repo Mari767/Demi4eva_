@@ -17,7 +17,9 @@ int main() {
 	int Size, i;
 	int* ptr;
 	int Sum;
-	cout << "Введите размер массива." << endl;
+	const int Size_ptr = 30;
+	int* Pointer[Size_ptr];
+	cout << "Введите размер массива. Максимальное количество -- 30 элементов." << endl;
 	cin >> Size;
 	int* mas = (int*)malloc(Size * sizeof(int));
 	for (i = 0; i < Size; i++) {
@@ -26,70 +28,69 @@ int main() {
 	for (i = 0; i < Size; i++) {
 		cout << setw(4) << *(mas + i);
 	}
-
-	cout << " \nOтносительный адрес " << endl;
-	ptr = mas;
-	for (i = 0, Sum = 0; i < Size; i++) {
-		if (*(ptr + i) < 0) {
-			Sum += *(ptr + i);
-		}
-	}cout << "Sum = " << Sum << endl;
+	for (i = 0; i < Size; i++) {
+		Pointer = mas;
+	}
 
 
-	cout << "через абсолютный адрес" << endl;
+	//cout << " \nOтносительный адрес " << endl;
 	//ptr = mas;
-	for (i = 0, Sum = 0; i < Size; i++, ptr++) {
-		if (*ptr < 0) {
-			Sum += *ptr;
-		}
-	}cout << "Sum = " << Sum << endl;
+	//for (i = 0, Sum = 0; i < Size; i++) {
+	//	if (*(ptr + i) < 0) {
+	//		Sum += *(ptr + i);
+	//	}
+	//}cout << "Sum = " << Sum << endl;
 
+	//cout << "через абсолютный адрес" << endl;
+	////ptr = mas;
+	//for (i = 0, Sum = 0; i < Size; i++, ptr++) {
+	//	if (*ptr < 0) {
+	//		Sum += *ptr;
+	//	}
+	//}cout << "Sum = " << Sum << endl;
 
-	cout << "Не использовуя индексацию" << endl;
-	for (ptr = mas, Sum = 0; ptr < mas + Size; ptr++) {
-		if (*ptr < 0) {
-			Sum += *ptr;
-		}
-	}cout << "Sum = " << Sum << endl;
+	//cout << "Не использовуя индексацию" << endl;
+	//for (ptr = mas, Sum = 0; ptr < mas + Size; ptr++) {
+	//	if (*ptr < 0) {
+	//		Sum += *ptr;
+	//	}
+	//}cout << "Sum = " << Sum << endl;
 
 
 	cout << "Через массив указателей" << endl;
-	int* Pointer = (int*)malloc(Size * sizeof(int));
-	for (i = 0; i < Size; i++) {
-		*(Pointer + i) = *(mas + i);
-	}
-	for (i = 0, Sum = 0; i < Size; i++) {
+
+	/*for (i = 0, Sum = 0; i < Size; i++) {
 		if (*(Pointer + i) < 0) {
 			Sum += *(Pointer + i);
 		}
-	}cout << "Sum = " << Sum << endl;
+	}cout << "Sum = " << Sum << endl;*/
+
 
 
 	//cout << "через указатель на указатель" << endl;
-	//int** P_ptr = &Pointer;
-	//for (i = 0, Sum = 0; i < Size; i++) {
-	//	if (*(*P_ptr+i) < 0) {
-	//		Sum += *(*P_ptr+i);
+	//ptr = mas;
+	//for (i = 0, Sum = 0; i < Size; i++/*, P_ptr++*/) {
+	//	if (**++P_ptr < 0) {
+	//		Sum += **P_ptr;
 	//	}
 	//}cout << "Sum = " << Sum << endl;
 
 
 
+	free(mas);
+	return 0;
+}
 
-		free(mas);
-		return 0;
-	}
-
-	////Абсолютная адресация
-	//p = A;
-	//for (int i = 0; i < N; i++, p++)
-	//    cout << *p << " ";
-	//
-	////Относительная адресация
-	//p = A;
-	//for (int i = 0; i < N; i++)
-	//    cout << *(p + i) << " "; //*(A+i)
-	//
-	//  //Без индексов (без переменной цикла i)
-	//for (p = A; p < A + N; p++)
-	//    cout << *p << " ";
+////Абсолютная адресация
+//p = A;
+//for (int i = 0; i < N; i++, p++)
+//    cout << *p << " ";
+//
+////Относительная адресация
+//p = A;
+//for (int i = 0; i < N; i++)
+//    cout << *(p + i) << " "; //*(A+i)
+//
+//  //Без индексов (без переменной цикла i)
+//for (p = A; p < A + N; p++)
+//    cout << *p << " ";
