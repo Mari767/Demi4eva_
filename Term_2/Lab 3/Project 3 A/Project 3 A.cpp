@@ -7,7 +7,8 @@
 //е) оформить в виде функции с параметрами указателями.
 
 #include <iostream>
-#include <iomanip>
+#include <iomanip>    // for  	srand(time(NULL))
+#include "FSum.h"
 
 int main() {
 	setlocale(LC_ALL, "ru");
@@ -33,53 +34,63 @@ int main() {
 
 	//---------------------------------------------
 
-	printf("Oтносительный адрес.\n");
+	printf("Нахождение количества отрицательных элементов в одномерном динамическом массиве через:\n\n");
+	printf(" Oтносительный адрес.\n");
 	ptr = mas;
 	for (i = 0, Sum = 0; i < Size; i++) {
 		if (*(ptr + i) < 0) {
 			Sum += *(ptr + i);
 		}
-	}printf("Sum = %d\n", Sum);
+	}printf("    Sum = %d\n", Sum);
 
 	//---------------------------------------------
 
-	printf("Через абсолютный адрес.\n");
+	printf(" Через абсолютный адрес.\n");
 	ptr = mas;
 	for (i = 0, Sum = 0; i < Size; i++, ptr++) {
 		if (*ptr < 0) {
 			Sum += *ptr;
 		}
-	}printf("Sum = %d\n", Sum);
+	}printf("    Sum = %d\n", Sum);
 
 	//---------------------------------------------
 
-	printf("Не использовуя индексацию.\n");
+	printf(" Не использовуя индексацию.\n");
 	for (ptr = mas, Sum = 0; ptr < mas + Size; ptr++) {
 		if (*ptr < 0) {
 			Sum += *ptr;
 		}
-	}printf("Sum = %d\n", Sum);
+	}printf("    Sum = %d\n", Sum);
 
 	//---------------------------------------------
 
-	printf("Через массив указателей.\n");
+	printf(" Через массив указателей.\n");
 	for (i = 0, Sum = 0; i < Size; i++) {
-		Ptr_mas[i] = &mas[i];
-		if (*Ptr_mas[i] < 0) {
-			Sum += *Ptr_mas[i];
+		*(Ptr_mas + i) = (mas + i);             // * - арифметика указателей
+		if (**(Ptr_mas + i) < 0) {          // ** - арифметика указателей + разыменование указателя
+			Sum += **(Ptr_mas + i);
 		}
-	}printf("Sum = %d\n", Sum);
+	}printf("    Sum = %d\n", Sum);
 
 	//---------------------------------------------
 
-	printf("Через указатель на указатель.\n");
+	printf(" Через указатель на указатель.\n");
 	ptr = mas;
 	Pointer = &ptr;
 	for (i = 0, Sum = 0; i < Size; i++, (*Pointer)++) {
 		if (**Pointer < 0) {
 			Sum += **Pointer;
 		}
-	}printf("Sum = %d\n", Sum);
+	}printf("    Sum = %d\n", Sum);
+
+	//---------------------------------------------
+
+	printf(" В виде функции с параметрами указателями.\n");
+	ptr = mas;
+	Sum = 0;
+	Fsum(mas, &Sum, Size);
+	printf("    Sum = %d\n", Sum);
+
 
 	delete[] mas;
 	delete[] Ptr_mas;
