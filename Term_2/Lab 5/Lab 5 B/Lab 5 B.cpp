@@ -9,11 +9,10 @@
 #include "Quick.h"
 #include "Function.h"
 
-
 int main() {
 	setlocale(LC_ALL, "ru");
 	srand(time(NULL));
-	//объявление указателей на функции сортировки
+	//Создание указателя на функции сортировки
 	void (*Ptr_Function)(int*, int) = NULL;
 	int Size, i;
 	int a; //Выбор в менюшке
@@ -30,10 +29,8 @@ int main() {
 		*(Mas + i) = rand() % 100 - 50;
 	}
 
-
 	printf("Выберете метод сортировки массива. \n 1->Сортировка пузырьком \n 2->Гномья сортировка \n 3->Пирамидальная сортировка \n 4->Быстрая сортировка\n\n");
 	scanf_s("%d", &a);
-	
 
 	switch (a) {
 	case 1:
@@ -59,7 +56,7 @@ int main() {
 	printf("Исходный массив: \n");
 	Print_massiv(Mas, Size);
 
-	Chose_Sort(Mas, Size, Ptr_Function);  //  Вызываем функцию сортировки массива, записпнную в указатель
+	Chose_Sort(Mas, Size, Ptr_Function);  //  Вызываем функцию сортировки массива, записаную в указатель
 
 	printf("Отсортированный массив: \n");
 	Print_massiv(Mas, Size);
