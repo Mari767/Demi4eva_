@@ -14,14 +14,14 @@ int main() {
 	setlocale(LC_ALL, "ru");
 	srand(time(NULL));
 	int Size, i;
-	int* ptr;
-	int** Pointer = NULL;
+	int* ptr;             // указатель на элемент массива
+	int** Pointer = NULL; // указатель на указатель
 	int Sum;
 
 	printf("Введите размер массива.'\n");
 	scanf_s("%d", &Size);
-	int* mas = new int[Size];
-	int** Ptr_mas = new int* [Size];
+	int* mas = new int[Size];         // массив, с которым работаем
+	int** Ptr_mas = new int* [Size];  // массив указателей
 
 	//---------------------------------------------
 	//  Заполнение массива
@@ -66,7 +66,7 @@ int main() {
 
 	printf(" Через массив указателей.\n");
 	for (i = 0, Sum = 0; i < Size; i++) {
-		*(Ptr_mas + i) = (mas + i);             // * - арифметика указателей
+		*(Ptr_mas + i) = (mas + i);          // * - арифметика указателей
 		if (**(Ptr_mas + i) < 0) {          // ** - арифметика указателей + разыменование указателя
 			Sum += **(Ptr_mas + i);
 		}
@@ -88,7 +88,7 @@ int main() {
 	printf(" В виде функции с параметрами указателями.\n");
 	ptr = mas;
 	Sum = 0;
-	Fsum(mas, &Sum, Size);
+	Fsum(mas, &Sum, &Size);
 	printf("    Sum = %d\n", Sum);
 
 
