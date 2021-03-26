@@ -1,33 +1,13 @@
 ﻿//// сделать все возможные проверки на корректный ввод данных.
 ////функция копирует строку в другую строку заданной длины и размещает текст первой строки по центру второй строки.
-#include <stdio.h>
+
 #include <iostream>
-#define clear_buf a = 0; while (a != EOF && a != '\n') { a = getchar(); }
-
-void Input(char* Mas_1, char* mas_2, int Size_2, int symbol) { //symbol = Size для первого массива в функции
-	int i, b; 
-	int j = (Size_2 - symbol) / 2; // вычисляем позицию(вторая строка), с которой начинается копирование первой строки
-	// Заполнение второй строки
-	for (b = 0, i = 0; i < Size_2; i++) {
-
-		if (i >= j && b < symbol) {       // копирование первой строки в середину второй  
-			*(mas_2 + i) = *(Mas_1 + b);
-			b++;
-		}
-		else if (i < j || i >= j + b) {   // заполнение начала и конца второй строки пробелом
-			*(mas_2 + i) = ' ';
-		}
-		if (i == Size_2 - 1) {            // Конец строки. Очистка дальнейшего мусора
-			*(mas_2 + i) = '\0';
-		}
-	}
-}
+#include "Function.h"
 
 int main() {
 	setlocale(LC_ALL, "ru");
-	int Size_1 = 10, Size_2 = 20, i;
+	int Size_1 = 30, Size_2 = 45, i;
 	int symbol;   // кол-во введенных символов
-int buf, a = 0;        
 	if (Size_2 < Size_1) {
 		return 0;
 	}
@@ -39,7 +19,9 @@ int buf, a = 0;
 	// Заполнение первой строки
 	printf("Введите строку  ");
 	scanf_s("%[^\n]s", String, Size_1);
-	clear_buf;
+	//Вызов функции очистки буфера
+	clearStdIn();
+
 	printf("\nПервая строка: %s", String);
 	printf("\n\n");
 	//подсчет кол-во введенных символов
@@ -54,12 +36,6 @@ int buf, a = 0;
 	delete[] Str_2;
 	return 0;
 }
-//
-//char ch;
-//while ((ch = fgetc(stdin)) == EOF || ch == '\n');
-
-
-
 
 
 
