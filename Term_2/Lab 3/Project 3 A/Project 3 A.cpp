@@ -9,7 +9,7 @@
 #include <iostream>
 #include <iomanip>    // for  	srand(time(NULL))
 #include "FSum.h"
-
+ 
 int main() {
 	setlocale(LC_ALL, "ru");
 	srand(time(NULL));
