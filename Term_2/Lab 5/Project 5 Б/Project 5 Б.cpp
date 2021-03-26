@@ -11,16 +11,10 @@
 int main() {
 	setlocale(LC_ALL, "ru");
 	srand(time(NULL));
-
-	int(*Pointer_Sum)(int* Massiv, int Size);           //Создание указателя  Pointer_Sum
-	int(*Pointer_Multiplicat)(int* Massiv, int Size);   //Создание указателя  Pointer_Multiplicat
-
-	Pointer_Sum = Sum;                                  // Указатель на ф-цию Sum
-	Pointer_Multiplicat = Multiplication;               // Указатель на ф-цию Multiplication
-
 	int sum, mult;
-
 	int Size;
+	int(*Pointer_Func)(int* Massiv, int Size);           //Создание указателя  Pointer_Func
+
 	printf("Введите размер массива\n");
 	scanf_s("%d", &Size);
 
@@ -31,10 +25,13 @@ int main() {
 		printf("%4d", *(Mas + i));
 	}printf("\n\n");
 
-	sum = Pointer_Sum(Mas, Size);         // вызов функций и присваевание возвращаемых элементов
-	mult = Pointer_Multiplicat(Mas, Size);
+	Pointer_Func = Sum;                          // Указатель на ф-цию Sum
+	sum = Pointer_Func(Mas, Size);         // вызов функций и присваевание возвращаемых элементов
+
+	Pointer_Func = Multiplication;               // Указатель на ф-цию Multiplication
+	mult = Pointer_Func(Mas, Size);
 	
-	printf("%3d   %3d", sum, mult);
+	printf("Сумма положительных элементов %3d \nПроизведение отрицательных элементов %3d\n", sum, mult);
 
 	free(Mas);
 	return 0;
