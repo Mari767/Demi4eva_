@@ -4,7 +4,7 @@
 //  – работа с двумерным массивом, как с двумерным(**А).
 #include "Declaration.h"
 #include <windows.h>
-#define Print_1
+//#define Print_1
 
 int main() {
 	setlocale(LC_ALL, "ru");
