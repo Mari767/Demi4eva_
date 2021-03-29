@@ -4,22 +4,28 @@
 using namespace std;
 //char Rand_Name();
 
+void clearStdIn() { // ќчищение буфера Stdin
+	char c;
+	while ((c = getchar()) != '\n' && c != EOF);
+}
+
 int Screen(char* name, information vedom) {  //¬вод с экрана и запись в файл.
 	FILE* file;
 	fopen_s(&file, name, "wb");  // file opened
 	int Size;
-	float nomn;// переменна€ дл€ номинала
+	printf("¬ведите обозначение, тип, номинал, количество > \n(дл€ завершени€ заполнени€ таблицы введите в обозначение ***)\n");
+	char rand_name[M];
 	for (Size = 0; ; Size++) {
 		if (Size == B) {  //B=10
 			break;
 		}
-		printf("¬ведите обозначение, тип, номинал, количество > \n(дл€ завершени€ заполнени€ таблицы введите в обозначение ***)\n");
-		scanf_s("&s", vedom.name);
+		clearStdIn();
+		gets_s(vedom.name);
 		if (!strcmp(vedom.name, "***")) {
 			break;
 		}
-		scanf_s(" %c %f %d", &vedom.typ, &nomn, &vedom.colvo);
-		vedom.nom = nomn;
+		scanf_s(" %c", &vedom.typ);
+		scanf_s(" %d %d", &vedom.nom, &vedom.colvo);
 		fwrite(&vedom, sizeof(information), 1, file);
 	}
 	fclose(file);  //  file closed
@@ -120,8 +126,8 @@ void  Print_One_Note(char* name, information vedom, int Location) {   //ѕечать о
 	fseek(file, Location * sizeof(information), SEEK_SET);  // переход на заданную позицию Location
 	fread(&vedom, sizeof(information), 1, file);            // —читывание элемента с заданной позиции
 
-	printf("|%-13s|%-5c|%-11.f|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
-	printf("|--------------------------------------------|\n");
+	printf("|%-13s|%-5c|%-11d|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
+	printf("--------------------------------------------\n");
 	fclose(file);  //  file closed
 }
 
@@ -137,7 +143,7 @@ int Print(char* name, information vedom, int Size) {
 	for (int i = 0; i < Size; i++)
 	{
 		fread(&vedom, sizeof(information), 1, file);
-		printf("|%-13s|%-5c|%-11.f|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
+		printf("|%-13s|%-5c|%-11d|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 		printf("|--------------------------------------------|\n");
 	}
 	/*while (!feof(file)) {

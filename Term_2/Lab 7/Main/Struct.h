@@ -7,7 +7,7 @@
 struct information {
 	char name[M] = "";     //Обозначение
 	char typ;              //Тип
-	float nom;             //Номинал
+	int nom;             //Номинал
 	int colvo;             //Количество
 	short sort;            //Длинна строки(для сортировки)
 };
