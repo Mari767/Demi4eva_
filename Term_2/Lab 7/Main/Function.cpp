@@ -1,13 +1,9 @@
-
 #include <iostream>
 #include "Struct.h"
-using namespace std;
+//using namespace std;
 //char Rand_Name();
-
-void clearStdIn() { // Очищение буфера Stdin
-	char c;
-	while ((c = getchar()) != '\n' && c != EOF);
-}
+information Rand_Name(information vedom);
+void clearStdIn();
 
 int Screen(char* name, information vedom) {  //Ввод с экрана и запись в файл.
 	FILE* file;
@@ -32,19 +28,13 @@ int Screen(char* name, information vedom) {  //Ввод с экрана и запись в файл.
 	return Size;
 }
 
-void Rand(char* name, information vedom/*, char (*Rand_Name)()*/) {       //	Ввод случайным образом и запись в файл
+void Rand(char* name, information vedom) {       //	Ввод случайным образом и запись в файл
 	//Ввод рандомайзером
 	int Size = B;  // Size = 10
-	char masname[20][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY", "BROM-6", "TURP-08", "GHJ-0", "BERMUDO", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12", "ST", "CGU-12K" };
 	FILE* file;
 	fopen_s(&file, name, "wb");  // file opened
 	for (int i = 0; i < Size; i++) {
-		/*char rand_name[M];
-		*rand_name = '\0';
-		//rand_name[M] = { Rand_Name() };
-		//strcpy_s(vedom.name, rand_name);*/
-		int Randsign = rand() % 20;
-		strcpy_s(vedom.name, masname[Randsign]);
+		vedom = Rand_Name(vedom);
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
 		vedom.nom = rand() % 1000;
 		vedom.colvo = rand() % 100;
@@ -52,24 +42,14 @@ void Rand(char* name, information vedom/*, char (*Rand_Name)()*/) {       //	Вво
 	}
 	fclose(file);  //  file closed
 }
-//char Rand_Name(){
-//	char rand_name[M];
-//	char masname[20][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY", "BROM-6", "TURP-08", "GHJ-0", "BERMUDO", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12", "ST", "CGU-12K" };
-//	int Randsign = rand() % 20;
-//	strcpy_s(rand_name, masname[Randsign]);
-//	return rand_name[M];
-//}
 
 void Add_to_Start(char* name, information vedom, int Size_file_1, int add_to_start) { //Добавить запись в начало файла.
 	FILE* file;
 	FILE* file_2;
 	fopen_s(&file_2, "File_for_adding", "w");  // file_2 opened
 
-	char masname[20][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY", "BROM-6", "TURP-08", "GHJ-0", "BERMUDO", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12", "ST", "CGU-12K" };
 	for (int i = 0; i < add_to_start; i++) {  //Добавляются новые элементы в file_2
-
-		int Randsign = rand() % 20;
-		strcpy_s(vedom.name, masname[Randsign]);
+		vedom = Rand_Name(vedom);
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
 		vedom.nom = rand() % 1000;
 		vedom.colvo = rand() % 100;
@@ -97,13 +77,10 @@ void Add_to_Start(char* name, information vedom, int Size_file_1, int add_to_sta
 
 void Add_to_End(char* name, information vedom, int Add_elements) {   //Добавить запись в конец файла.
 
-	char masname[20][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY", "BROM-6", "TURP-08", "GHJ-0", "BERMUDO", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12", "ST", "CGU-12K" };
 	FILE* file;
 	fopen_s(&file, name, "ab");  // file opened
 	for (int i = 0; i < Add_elements; i++) {            //Генерируются элементы
-
-		int Randsign = rand() % 20;
-		strcpy_s(vedom.name, masname[Randsign]);
+		vedom = Rand_Name(vedom);
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
 		vedom.nom = rand() % 1000;
 		vedom.colvo = rand() % 100;
@@ -156,4 +133,16 @@ int Print(char* name, information vedom, int Size) {
 		cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
 	}*/
 	return Size;
+}
+
+information Rand_Name(information vedom) { // Рандомный Name  для  vedom.name
+	char masname[20][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY", "BROM-6", "TURP-08", "GHJ-0", "BERMUDO", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12", "ST", "CGU-12K" };
+	int Randsign = rand() % 20;
+	strcpy_s(vedom.name, masname[Randsign]);
+	return vedom;
+}
+
+void clearStdIn() { // Очищение буфера Stdin
+	char c;
+	while ((c = getchar()) != '\n' && c != EOF);
 }
