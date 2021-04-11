@@ -24,20 +24,19 @@ int main() {
 	int Location;  // позиция, на которой нужно распечатать элемент
 	int Size = 0;      // кол-во объектов структуры  (Ведомость комплектующих)
 	char* name = new char[20]{ "File_lab_main_7.bin" }; // Имя файла ( с указаьелем file)
-	 
 	 //Меню
 	do {
-		printf("Выберите действие: \n  1-> Ввод с экрана и запись в файл. \n  2-> Ввод случайным образом и запись в файл.\n  3->  Добавить запись в начало файла.\n  4-> Добавить запись в конец файла.\n  5-> Печать одной записи из файла по номеру.\n  6-> Печать всех записей из файла.\n  7-> Выход из программы. \n");
+		printf("Выберите действие: \n  1-> Ввод с экрана и запись в файл. \n  2-> Ввод случайным образом и запись в файл.\n  3-> Добавить запись в начало файла.\n  4-> Добавить запись в конец файла.\n  5-> Печать одной записи из файла по номеру.\n  6-> Печать всех записей из файла.\n  7-> Выход из программы. \n");
 		scanf_s("%d", &a);
 		switch (a) {
 		case 1:    // Ввод с экрана и запись в файл.
-			Size = Screen(name, vedom);
+			Screen(name, vedom, &Size);
 			is_file_full = true;
 			printf("Таблица заполнена.\n");
 			break;
 
 		case 2:    // Ввод случайным образом и запись в файл
-			Rand(name, vedom);
+			Rand(name, vedom, &Size);
 			Size = B;
 			is_file_full = true;
 			printf("Таблица заполнена. \n");
@@ -50,7 +49,7 @@ int main() {
 				printf("Некорректный ввод.\n");
 				break;
 			}
-			Add_to_Start(name, vedom, Size, elements);
+			Add_to_Start(name, vedom, &Size, elements);
 			Size += elements;
 			is_file_full = true;
 			printf("\n\nДобавлена запись в начало файла.\n");
@@ -63,8 +62,8 @@ int main() {
 				printf("Некорректный ввод.\n");
 				break;
 			}
-			Size = Size + elements;
 			Add_to_End(name, vedom, elements);
+			Size = Size + elements;
 			is_file_full = true;
 			printf("Добавлена запись в конец файла. \n");
 			break;
@@ -88,7 +87,7 @@ int main() {
 				printf("Файл пуст. Печать невозможна.\n");
 				break;
 			}
-			Print(name, vedom, Size);
+			Print(name, vedom, &Size);
 			break;
 
 		case 7:    // Выход из программы.

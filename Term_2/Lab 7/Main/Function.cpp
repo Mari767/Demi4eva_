@@ -6,14 +6,16 @@ using namespace std;
 information Rand_Name(information vedom);
 void clearStdIn();
 
-int Screen(char* name, information vedom) {  //Ввод с экрана и запись в файл.
+void Screen(char* name, information vedom, int* Size) {  //Ввод с экрана и запись в файл.
 	FILE* file;
 	fopen_s(&file, name, "wb");  // file opened
-	int Size;
+	if (file == NULL) {
+		exit(0);
+	}
 	printf("Введите обозначение, тип, номинал, количество > \n(для завершения заполнения таблицы введите в обозначение ***)\n");
 	char rand_name[M];
-	for (Size = 0; ; Size++) {
-		if (Size == B) {  //B=10
+	for (; ; (*Size)++) {
+		if (*Size == B) {  //B=10
 			break;
 		}
 		clearStdIn();
@@ -26,15 +28,17 @@ int Screen(char* name, information vedom) {  //Ввод с экрана и запись в файл.
 		fwrite(&vedom, sizeof(information), 1, file);
 	}
 	fclose(file);  //  file closed
-	return Size;
 }
 
-void Rand(char* name, information vedom) {       //	Ввод случайным образом и запись в файл
+void Rand(char* name, information vedom, int* Size) {       //	Ввод случайным образом и запись в файл
 	//Ввод рандомайзером
-	int Size = B;  // Size = 10
+	 *Size = B;  // Size = 10
 	FILE* file = NULL;
 	fopen_s(&file, name, "wb");  // file opened
-	for (int i = 0; i < Size; i++) {
+	if (file == NULL) {
+		exit(0);
+	}
+	for (int i = 0; i < *Size; i++) {
 		vedom = Rand_Name(vedom);
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
 		vedom.nom = rand() % 1000;
@@ -44,11 +48,13 @@ void Rand(char* name, information vedom) {       //	Ввод случайным образом и зап
 	fclose(file);  //  file closed
 }
 
-void Add_to_Start(char* name, information vedom, int Size_file_1, int add_to_start) { //Добавить запись в начало файла.
+void Add_to_Start(char* name, information vedom, int* Size_file_1, int add_to_start) { //Добавить запись в начало файла.
 	FILE* file = NULL;
 	FILE* file_2 = NULL;
 	fopen_s(&file_2, "File_for_adding", "w");  // file_2 opened
-
+	if (file_2 == NULL) {
+		exit(0);
+	}
 	for (int i = 0; i < add_to_start; i++) {  //Добавляются новые элементы в file_2
 		vedom = Rand_Name(vedom);
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
@@ -57,18 +63,24 @@ void Add_to_Start(char* name, information vedom, int Size_file_1, int add_to_sta
 		fwrite(&vedom, sizeof(information), 1, file_2);
 	}
 	fopen_s(&file, name, "r");  // file opened
-
-	for (int i = 0; i < Size_file_1; i++) {  // из file копируем данные в file_2   (дозаполнение file_2)
+	if (file == NULL) {
+		exit(0);
+	}
+	for (int i = 0; i < *Size_file_1; i++) {  // из file копируем данные в file_2   (дозаполнение file_2)
 		fread(&vedom, sizeof(information), 1, file);
 		fwrite(&vedom, sizeof(information), 1, file_2);
 	}
 	fclose(file);    //  file closed
 	fclose(file_2);  //  file_2 closed
-	Size_file_1 += add_to_start;             // Увеличение Size, так как добавлены новые элементы
+	*Size_file_1 += add_to_start;             // Увеличение Size, так как добавлены новые элементы
 	fopen_s(&file, name, "w");                    // file opened
 	fopen_s(&file_2, "File_for_adding", "r");     // file_2 opened
-
-	for (int i = 0; i < Size_file_1; i++) {  // переносим все данные из filr_2 в file (в результате у нас есть file с добавленными элементами в начало)
+	if (file == NULL) {
+		exit(0);
+	}if (file_2 == NULL) {
+		exit(0);
+	}
+	for (int i = 0; i < *Size_file_1; i++) {  // переносим все данные из filr_2 в file (в результате у нас есть file с добавленными элементами в начало)
 		fread(&vedom, sizeof(information), 1, file_2);
 		fwrite(&vedom, sizeof(information), 1, file);
 	}
@@ -80,6 +92,9 @@ void Add_to_End(char* name, information vedom, int Add_elements) {   //Добавить 
 
 	FILE* file = NULL;
 	fopen_s(&file, name, "ab");  // file opened
+	if (file == NULL) {
+	exit(0);
+}
 	for (int i = 0; i < Add_elements; i++) {            //Генерируются элементы
 		vedom = Rand_Name(vedom);
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
@@ -94,7 +109,9 @@ void Add_to_End(char* name, information vedom, int Add_elements) {   //Добавить 
 void  Print_One_Note(char* name, information vedom, int Location) {   //Печать одной записи из файла по номеру.
 	FILE* file = NULL;
 	fopen_s(&file, name, "rb");  // file opened
-
+	if (file == NULL) {
+		exit(0);
+	}
 	printf("----------------------------------------------\n");
 	printf("|         Ведомость комплектующих            |\n");
 	printf("|--------------------------------------------|\n");
@@ -109,10 +126,12 @@ void  Print_One_Note(char* name, information vedom, int Location) {   //Печать о
 	fclose(file);  //  file closed
 }
 
-void Print(char* name, information vedom, int Size) {
+void Print(char* name, information vedom, int* Size) {
 	FILE* file = NULL;
 	fopen_s(&file, name, "rb");  // file opened
-	
+	if (file == NULL) {
+		exit(0);
+	}
 
 	printf("----------------------------------------------\n");
 	printf("|         Ведомость комплектующих            |\n");
@@ -120,7 +139,7 @@ void Print(char* name, information vedom, int Size) {
 	printf("| Обозначение | Тип |  Номинал  | Количество |\n");
 	printf("|-------------|-----|-----------|------------|\n");
 	
-	for (int i = 0; i < Size; i++) {
+	for (int i = 0; i < *Size; i++) {
 		fread(&vedom, sizeof(information), 1, file);
 		printf("|%-13s|%-5c|%-11d|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 		printf("|--------------------------------------------|\n");
