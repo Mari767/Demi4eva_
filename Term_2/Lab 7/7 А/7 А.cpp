@@ -7,7 +7,6 @@
 #include "Function.h"
 #define _CRT_SECURE_NO_WARNINGS 
 #pragma warning(disable : 4996)
-using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "ru");
@@ -66,5 +65,8 @@ int main() {
 	}
 	fclose(f2);
 	printf("\n\n");
+	delete[] mas_1;
+	delete[] mas_2;
 	return 0;
+
 }
