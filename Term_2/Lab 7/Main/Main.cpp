@@ -18,11 +18,13 @@ int main() {
 	setlocale(LC_ALL, "ru");
 	srand(time_t(NULL));
 	information vedom;   //объект структуры
+	bool is_file_full = false;  // заполнен файл или пуст
 	int a;         // выбор в меню
 	int elements;  // кол-во добавляемых елементов
 	int Location;  // позиция, на которой нужно распечатать элемент
-	int Size;      // кол-во объектов структуры  (Ведомость комплектующих)
-	char* name = new char[20]{ "File_lab_main_7" }; // Имя файла ( с указаьелем file)
+	int Size = 0;      // кол-во объектов структуры  (Ведомость комплектующих)
+	char* name = new char[20]{ "File_lab_main_7.bin" }; // Имя файла ( с указаьелем file)
+	 
 	 //Меню
 	do {
 		printf("Выберите действие: \n  1-> Ввод с экрана и запись в файл. \n  2-> Ввод случайным образом и запись в файл.\n  3->  Добавить запись в начало файла.\n  4-> Добавить запись в конец файла.\n  5-> Печать одной записи из файла по номеру.\n  6-> Печать всех записей из файла.\n  7-> Выход из программы. \n");
@@ -30,13 +32,15 @@ int main() {
 		switch (a) {
 		case 1:    // Ввод с экрана и запись в файл.
 			Size = Screen(name, vedom);
-			printf("Таблица заполнена. \nВыберите дальнейшее действие.\n");
+			is_file_full = true;
+			printf("Таблица заполнена.\n");
 			break;
 
 		case 2:    // Ввод случайным образом и запись в файл
 			Rand(name, vedom);
 			Size = B;
-			printf("Таблица заполнена. \nВыберите дальнейшее действие.\n");
+			is_file_full = true;
+			printf("Таблица заполнена. \n");
 			break;
 
 		case 3:    // Добавить запись в начало файла.
@@ -48,7 +52,8 @@ int main() {
 			}
 			Add_to_Start(name, vedom, Size, elements);
 			Size += elements;
-			printf("\n\nДобавлена запись в начало файла. Выберите дальнейшее действие.\n");
+			is_file_full = true;
+			printf("\n\nДобавлена запись в начало файла.\n");
 			break;
 
 		case 4:    // Добавить запись в конец файла.
@@ -60,10 +65,15 @@ int main() {
 			}
 			Size = Size + elements;
 			Add_to_End(name, vedom, elements);
-			printf("Добавлена запись в конец файла. \nВыберите дальнейшее действие.\n");
+			is_file_full = true;
+			printf("Добавлена запись в конец файла. \n");
 			break;
 
 		case 5:    // Печать одной записи из файла по номеру.
+			if (is_file_full == false) {
+				printf("Файл пуст. Печать невозможна.\n");
+				break;
+			}
 			printf("Введите номер элемента для печати. Номерация с нуля.\n");
 			scanf_s("%d", &Location);
 			if (Location >= Size || Location < 0) {
@@ -71,13 +81,16 @@ int main() {
 				break;
 			}
 			Print_One_Note(name, vedom, Location);
-			printf("\n\nВыберите дальнейшее действие.\n");
 			break;
 
-		case 6:    // Печать всех записей из файла.
+		case 6:
+			if (is_file_full == false) {
+				printf("Файл пуст. Печать невозможна.\n");
+				break;
+			}
 			Print(name, vedom, Size);
-			printf("Выберите дальнейшее действие.\n");
 			break;
+
 		case 7:    // Выход из программы.
 			break;
 		default:
@@ -86,3 +99,4 @@ int main() {
 	} while (a != 7);
 	return 0;
 }
+

@@ -1,7 +1,8 @@
 #include <iostream>
+#include <stdio.h>
 #include "Struct.h"
-//using namespace std;
-//char Rand_Name();
+using namespace std;
+
 information Rand_Name(information vedom);
 void clearStdIn();
 
@@ -16,7 +17,7 @@ int Screen(char* name, information vedom) {  //Ввод с экрана и запись в файл.
 			break;
 		}
 		clearStdIn();
-		gets_s(vedom.name);
+		cin.getline(vedom.name, M);
 		if (!strcmp(vedom.name, "***")) {
 			break;
 		}
@@ -31,7 +32,7 @@ int Screen(char* name, information vedom) {  //Ввод с экрана и запись в файл.
 void Rand(char* name, information vedom) {       //	Ввод случайным образом и запись в файл
 	//Ввод рандомайзером
 	int Size = B;  // Size = 10
-	FILE* file;
+	FILE* file = NULL;
 	fopen_s(&file, name, "wb");  // file opened
 	for (int i = 0; i < Size; i++) {
 		vedom = Rand_Name(vedom);
@@ -44,8 +45,8 @@ void Rand(char* name, information vedom) {       //	Ввод случайным образом и зап
 }
 
 void Add_to_Start(char* name, information vedom, int Size_file_1, int add_to_start) { //Добавить запись в начало файла.
-	FILE* file;
-	FILE* file_2;
+	FILE* file = NULL;
+	FILE* file_2 = NULL;
 	fopen_s(&file_2, "File_for_adding", "w");  // file_2 opened
 
 	for (int i = 0; i < add_to_start; i++) {  //Добавляются новые элементы в file_2
@@ -77,7 +78,7 @@ void Add_to_Start(char* name, information vedom, int Size_file_1, int add_to_sta
 
 void Add_to_End(char* name, information vedom, int Add_elements) {   //Добавить запись в конец файла.
 
-	FILE* file;
+	FILE* file = NULL;
 	fopen_s(&file, name, "ab");  // file opened
 	for (int i = 0; i < Add_elements; i++) {            //Генерируются элементы
 		vedom = Rand_Name(vedom);
@@ -91,7 +92,7 @@ void Add_to_End(char* name, information vedom, int Add_elements) {   //Добавить 
 }
 
 void  Print_One_Note(char* name, information vedom, int Location) {   //Печать одной записи из файла по номеру.
-	FILE* file;
+	FILE* file = NULL;
 	fopen_s(&file, name, "rb");  // file opened
 
 	printf("----------------------------------------------\n");
@@ -108,31 +109,23 @@ void  Print_One_Note(char* name, information vedom, int Location) {   //Печать о
 	fclose(file);  //  file closed
 }
 
-int Print(char* name, information vedom, int Size) {
-	FILE* file;
+void Print(char* name, information vedom, int Size) {
+	FILE* file = NULL;
 	fopen_s(&file, name, "rb");  // file opened
+	
 
 	printf("----------------------------------------------\n");
 	printf("|         Ведомость комплектующих            |\n");
 	printf("|--------------------------------------------|\n");
 	printf("| Обозначение | Тип |  Номинал  | Количество |\n");
 	printf("|-------------|-----|-----------|------------|\n");
-	for (int i = 0; i < Size; i++)
-	{
+	
+	for (int i = 0; i < Size; i++) {
 		fread(&vedom, sizeof(information), 1, file);
 		printf("|%-13s|%-5c|%-11d|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 		printf("|--------------------------------------------|\n");
 	}
-	/*while (!feof(file)) {
-			fread(&vedom, sizeof(information), 1, file);
-			printf("|%-13s|%-5c|%-11.f|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
-			printf("|--------------------------------------------|\n");
-	}*/
 	fclose(file);  //  file closed
-	/*else {
-		cout << "Таблица пуста. Пожалуйста заполните сперва таблицу.\n" << endl;
-	}*/
-	return Size;
 }
 
 information Rand_Name(information vedom) { // Рандомный Name  для  vedom.name
@@ -141,7 +134,6 @@ information Rand_Name(information vedom) { // Рандомный Name  для  vedom.name
 	strcpy_s(vedom.name, masname[Randsign]);
 	return vedom;
 }
-
 void clearStdIn() { // Очищение буфера Stdin
 	char c;
 	while ((c = getchar()) != '\n' && c != EOF);
