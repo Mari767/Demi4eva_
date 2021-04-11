@@ -45,7 +45,7 @@ int main() {
 		}
 		i++;
 	}
-	printf("\n2 -> Массив(mas_1) считан из  файла(f1) в mas_2        и - %d\n\n", i);
+	printf("\n2 -> Массив(mas_1) считан из  файла(f1) в mas_2  \n\n");
 	Print_mas(mas_2, &Size);
 	printf("\n\nCуммa четных чисел равна %d\n\n", Sum);
 
