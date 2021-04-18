@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <stdio.h>
 #include "Struct.h"
@@ -8,7 +9,7 @@ void clearStdIn();
 
 void Screen(char* name, information vedom, int* Size) {  //Ввод с экрана и запись в файл.
 	FILE* file;
-	fopen_s(&file, name, "wb");  // file opened
+	fopen_s(&file, name, "wt");  // file opened
 	if (file == NULL) {
 		exit(0);
 	}
@@ -25,16 +26,16 @@ void Screen(char* name, information vedom, int* Size) {  //Ввод с экрана и запис
 		}
 		scanf_s(" %c", &vedom.typ);
 		scanf_s(" %d %d", &vedom.nom, &vedom.colvo);
-		fwrite(&vedom, sizeof(information), 1, file);
+		fprintf(file, "%s %c %d %d\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 	}
 	fclose(file);  //  file closed
 }
 
 void Rand(char* name, information vedom, int* Size) {       //	Ввод случайным образом и запись в файл
 	//Ввод рандомайзером
-	 *Size = B;  // Size = 10
+	*Size = B;  // Size = 10
 	FILE* file = NULL;
-	fopen_s(&file, name, "wb");  // file opened
+	fopen_s(&file, name, "wt");  // file opened
 	if (file == NULL) {
 		exit(0);
 	}
@@ -43,7 +44,7 @@ void Rand(char* name, information vedom, int* Size) {       //	Ввод случайным об
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
 		vedom.nom = rand() % 1000;
 		vedom.colvo = rand() % 100;
-		fwrite(&vedom, sizeof(information), 1, file);
+		fprintf(file, "%s %c %d %d\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 	}
 	fclose(file);  //  file closed
 }
@@ -51,7 +52,7 @@ void Rand(char* name, information vedom, int* Size) {       //	Ввод случайным об
 void Add_to_Start(char* name, information vedom, int* Size_file_1, int add_to_start) { //Добавить запись в начало файла.
 	FILE* file = NULL;
 	FILE* file_2 = NULL;
-	fopen_s(&file_2, "File_for_adding", "w");  // file_2 opened
+	fopen_s(&file_2, "File_for_adding.txt", "wt");  // file_2 opened
 	if (file_2 == NULL) {
 		exit(0);
 	}
@@ -60,29 +61,49 @@ void Add_to_Start(char* name, information vedom, int* Size_file_1, int add_to_st
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
 		vedom.nom = rand() % 1000;
 		vedom.colvo = rand() % 100;
-		fwrite(&vedom, sizeof(information), 1, file_2);
+		fprintf(file_2, "%s %c %d %d\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 	}
-	fopen_s(&file, name, "r");  // file opened
+	fclose(file_2);
+	file_2 = NULL;
+	fopen_s(&file, name, "rt");  // file opened
 	if (file == NULL) {
 		exit(0);
 	}
+	fopen_s(&file_2, "File_for_adding.txt", "at");  // file_2 opened
+	if (file_2 == NULL) {
+		exit(0);
+	}
 	for (int i = 0; i < *Size_file_1; i++) {  // из file копируем данные в file_2   (дозаполнение file_2)
-		fread(&vedom, sizeof(information), 1, file);
-		fwrite(&vedom, sizeof(information), 1, file_2);
+		fscanf_s(file, "%s", vedom.name, 20);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%c", &vedom.typ);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%d", &vedom.nom);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%d", &vedom.colvo);
+		fprintf(file_2, "%s %c %d %d\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 	}
 	fclose(file);    //  file closed
 	fclose(file_2);  //  file_2 closed
 	*Size_file_1 += add_to_start;             // Увеличение Size, так как добавлены новые элементы
-	fopen_s(&file, name, "w");                    // file opened
-	fopen_s(&file_2, "File_for_adding", "r");     // file_2 opened
+	file = NULL;
+	file_2 = NULL;
+	fopen_s(&file, name, "wt");                    // file opened
+	fopen_s(&file_2, "File_for_adding.txt", "rt");     // file_2 opened
 	if (file == NULL) {
 		exit(0);
 	}if (file_2 == NULL) {
 		exit(0);
 	}
 	for (int i = 0; i < *Size_file_1; i++) {  // переносим все данные из filr_2 в file (в результате у нас есть file с добавленными элементами в начало)
-		fread(&vedom, sizeof(information), 1, file_2);
-		fwrite(&vedom, sizeof(information), 1, file);
+		fscanf_s(file_2, "%s", vedom.name, 20);
+		fseek(file_2, 1, SEEK_CUR);
+		fscanf_s(file_2, "%c", &vedom.typ);
+		fseek(file_2, 1, SEEK_CUR);
+		fscanf_s(file_2, "%d", &vedom.nom);
+		fseek(file_2, 1, SEEK_CUR);
+		fscanf_s(file_2, "%d", &vedom.colvo);
+		fprintf(file, "%s %c %d %d\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 	}
 	fclose(file);    //  file closed
 	fclose(file_2);  //  file_2 closed
@@ -91,24 +112,24 @@ void Add_to_Start(char* name, information vedom, int* Size_file_1, int add_to_st
 void Add_to_End(char* name, information vedom, int Add_elements) {   //Добавить запись в конец файла.
 
 	FILE* file = NULL;
-	fopen_s(&file, name, "ab");  // file opened
+	fopen_s(&file, name, "at");  // file opened
 	if (file == NULL) {
-	exit(0);
-}
+		exit(0);
+	}
 	for (int i = 0; i < Add_elements; i++) {            //Генерируются элементы
 		vedom = Rand_Name(vedom);
 		vedom.typ = 'A' + rand() % ('Z' - 'A');
 		vedom.nom = rand() % 1000;
 		vedom.colvo = rand() % 100;
-
-		fwrite(&vedom, sizeof(information), 1, file);    // Запись сгенерированных элементов в конец файла
+		fprintf(file, "%s %c %d %d", vedom.name, vedom.typ, vedom.nom, vedom.colvo);// Запись сгенерированных элементов в конец файла
 	}
 	fclose(file);
 }
 
 void  Print_One_Note(char* name, information vedom, int Location) {   //Печать одной записи из файла по номеру.
+	int i = 0;
 	FILE* file = NULL;
-	fopen_s(&file, name, "rb");  // file opened
+	fopen_s(&file, name, "rt");  // file opened
 	if (file == NULL) {
 		exit(0);
 	}
@@ -118,9 +139,16 @@ void  Print_One_Note(char* name, information vedom, int Location) {   //Печать о
 	printf("| Обозначение | Тип |  Номинал  | Количество |\n");
 	printf("|-------------|-----|-----------|------------|\n");
 
-	fseek(file, Location * sizeof(information), SEEK_SET);  // переход на заданную позицию Location
-	fread(&vedom, sizeof(information), 1, file);            // Считывание элемента с заданной позиции
-
+	while (i != Location + 1) { // переход на заданную позицию Location
+		fscanf_s(file, "%s", vedom.name, M);                  // Считывание элемента с заданной позиции
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%c", &vedom.typ);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%d", &vedom.nom);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%d", &vedom.colvo);
+		i++;
+	}
 	printf("|%-13s|%-5c|%-11d|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 	printf("--------------------------------------------\n");
 	fclose(file);  //  file closed
@@ -128,7 +156,7 @@ void  Print_One_Note(char* name, information vedom, int Location) {   //Печать о
 
 void Print(char* name, information vedom, int* Size) {
 	FILE* file = NULL;
-	fopen_s(&file, name, "rb");  // file opened
+	fopen_s(&file, name, "rt");  // file opened
 	if (file == NULL) {
 		exit(0);
 	}
@@ -138,9 +166,15 @@ void Print(char* name, information vedom, int* Size) {
 	printf("|--------------------------------------------|\n");
 	printf("| Обозначение | Тип |  Номинал  | Количество |\n");
 	printf("|-------------|-----|-----------|------------|\n");
-	
+
 	for (int i = 0; i < *Size; i++) {
-		fread(&vedom, sizeof(information), 1, file);
+		fscanf_s(file, "%s", vedom.name, 20);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%c", &vedom.typ);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%d", &vedom.nom);
+		fseek(file, 1, SEEK_CUR);
+		fscanf_s(file, "%d", &vedom.colvo);
 		printf("|%-13s|%-5c|%-11d|%-12d|\n", vedom.name, vedom.typ, vedom.nom, vedom.colvo);
 		printf("|--------------------------------------------|\n");
 	}

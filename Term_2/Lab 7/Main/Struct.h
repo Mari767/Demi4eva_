@@ -1,7 +1,7 @@
 #pragma once
 #ifndef STRUCT_H_
 #define STRUCT_H_
-#define B 10
+#define B 3
 #define M 20
 
 struct information {
