@@ -1,7 +1,7 @@
 #pragma once
 #ifndef FUNCTION_H_
 #define FUNCTION_H_
-
+#include "Struct.h"
 
 void Screen(char* name, information vedom, int* Size);
 void Rand(char* name, information vedom, int* Size);
