@@ -22,7 +22,7 @@ int main() {
 	Print_mas(mas_1, &Size);
 
 	//Записать в файл(f1) весь массив(mas_1)10 чисел.
-	f1 = fopen("file_1.txt", "wt");
+	f1 = fopen("file_1.dat", "wb");
 	Check(f1);
 	i = 0;
 	fwrite((mas_1 + i), sizeof(int), Size, f1);
@@ -32,7 +32,7 @@ int main() {
 	
 	//Считать поэлементно в другой массив и найти сумму четных.
 	f1 = NULL;
-	f1 = fopen("file_1.txt", "rt");
+	f1 = fopen("file_1.dat", "rb");
 	Check(f1);
 	i = 0;
 	while (!feof(f1))

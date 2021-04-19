@@ -18,7 +18,7 @@ int main() {
 	int Location;
 
 	FILE* f = NULL;
-	f = fopen("file.txt", "wt");
+	f = fopen("file.dat", "wb");
 	Check(f);
 
 	printf("Подсчет позиций начинается с нуля.\n");
@@ -36,7 +36,7 @@ int main() {
 	printf("\nSum (2, 5, 9) = %d\n", Sum);
 
 	f = NULL;
-	f = fopen("file.txt", "r+t");
+	f = fopen("file.dat", "r+b");
 	Check(f);
 
 	// Поиск минимального числа и его позиции

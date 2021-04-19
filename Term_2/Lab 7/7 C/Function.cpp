@@ -11,7 +11,7 @@ void Check(FILE* fptr) {
 void Read_Sum(FILE* file,int Location, int*Sum){
 	int number;
 	file = NULL;
-	file = fopen("file.txt", "r+t");
+	file = fopen("file.dat", "r+b");
 	Check(file);
 
 	fseek(file, Location * sizeof(int), SEEK_SET); // поиск позиции
