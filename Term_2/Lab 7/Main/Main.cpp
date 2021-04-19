@@ -23,6 +23,7 @@ int main() {
 	int elements;  // кол-во добавляемых елементов
 	int Location;  // позиция, на которой нужно распечатать элемент
 	int Size = 0;      // кол-во объектов структуры  (Ведомость комплектующих)
+	int SIZE_Const = 10;
 	char* name = new char[20]{ "File_lab_main_7.txt" }; // Имя файла ( с указаьелем file)
 	 //Меню
 	do {
@@ -43,7 +44,7 @@ int main() {
 
 		case 2:    // Ввод случайным образом и запись в файл
 			Rand(name, vedom, &Size);
-			Size = B;
+			Size = SIZE_Const;
 			is_file_full = true;
 			printf("Таблица заполнена. \n");
 			break;

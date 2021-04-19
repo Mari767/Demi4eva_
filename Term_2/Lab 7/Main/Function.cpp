@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable : 4996)
 #include <iostream>
 #include <stdio.h>
 #include "Struct.h"
@@ -14,13 +15,13 @@ void Screen(char* name, information vedom, int* Size) {  //Ввод с экрана и запис
 		exit(0);
 	}
 	printf("Введите обозначение, тип, номинал, количество > \n(для завершения заполнения таблицы введите в обозначение ***)\n");
-	char rand_name[M];
+	char rand_name[20];
 	for (; ; (*Size)++) {
-		if (*Size == B) {  //B=10
+		if (*Size == 10) {  //B=10
 			break;
 		}
 		clearStdIn();
-		cin.getline(vedom.name, M);
+		cin.getline(vedom.name, 20);
 		if (!strcmp(vedom.name, "***")) {
 			break;
 		}
@@ -33,7 +34,7 @@ void Screen(char* name, information vedom, int* Size) {  //Ввод с экрана и запис
 
 void Rand(char* name, information vedom, int* Size) {       //	Ввод случайным образом и запись в файл
 	//Ввод рандомайзером
-	*Size = B;  // Size = 10
+	*Size = 10;  // Size = 10
 	FILE* file = NULL;
 	fopen_s(&file, name, "wt");  // file opened
 	if (file == NULL) {
@@ -140,7 +141,7 @@ void  Print_One_Note(char* name, information vedom, int Location) {   //Печать о
 	printf("|-------------|-----|-----------|------------|\n");
 
 	while (i != Location + 1) { // переход на заданную позицию Location
-		fscanf_s(file, "%s", vedom.name, M);                  // Считывание элемента с заданной позиции
+		fscanf_s(file, "%s", vedom.name, 20);                  // Считывание элемента с заданной позиции
 		fseek(file, 1, SEEK_CUR);
 		fscanf_s(file, "%c", &vedom.typ);
 		fseek(file, 1, SEEK_CUR);
@@ -182,9 +183,16 @@ void Print(char* name, information vedom, int* Size) {
 }
 
 information Rand_Name(information vedom) { // Рандомный Name  для  vedom.name
-	char masname[20][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY", "BROM-6", "TURP-08", "GHJ-0", "BERMUDO", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12", "ST", "CGU-12K" };
+	/*char masname[20][20] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY",
+			"BROM-6", "TURP-08", "GHJ-0", "BERMUDO","ST", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12",  "CGU-12K" };*/
 	int Randsign = rand() % 20;
-	strcpy_s(vedom.name, masname[Randsign]);
+
+	FILE* file = NULL;
+	file = fopen("Rand_name.dat", "rb");
+	fseek(file, Randsign * sizeof(information), SEEK_SET);
+	fread(vedom.name, sizeof(information), 1, file);
+	fclose(file);
+
 	return vedom;
 }
 void clearStdIn() { // Очищение буфера Stdin
