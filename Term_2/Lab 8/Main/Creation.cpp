@@ -270,10 +270,11 @@ information Rand() {       //	Ввод случайным образом //  заполнение  элеммента с
 }
 
 information Rand_Name(information vedom) { // Рандомный Name  для  vedom.name
-	char masname[20][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY",
+	char masname[M][M] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY",
 		"BROM-6", "TURP-08", "GHJ-0", "BERMUDO","ST", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12",  "CGU-12K" };
 	int Randsign = rand() % 20;
 	strcpy_s(vedom.name, masname[Randsign]);
+	
 	return vedom;
 }
 void clearStdIn() { // Очищение буфера Stdin
