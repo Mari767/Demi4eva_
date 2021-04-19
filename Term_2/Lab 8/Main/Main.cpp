@@ -11,7 +11,8 @@
 //9.  Выход из программы.
 //Все в отдельных функциях, с макроопределениями и раздельной компиляцией.
 //#define _CRT_SECURE_NO_WARNINGS
-
+#define _CRT_SECURE_NO_WARNINGS 
+#pragma warning(disable : 4996)
 #include "Function.h"
 #include "Struct.h"
 #include <iostream>
@@ -25,7 +26,7 @@ int main() {
 	bool is_file_full = false;  // заполнен файл или пуст
 	int menu;          // выбор в меню
 	int Location;      // позиция, на которой нужно распечатать элемент
-	int Size = 0;      // кол-во объектов структуры  (Ведомость комплектующих)
+	int Size = 20;      // кол-во объектов структуры  (Ведомость комплектующих)
 	char* name = new char[20]{ "File_lab_main_8.txt" }; // Имя файла ( с указаьелем file)
 
 	int search_criteria; // выбор, где несколько вариантов ответа

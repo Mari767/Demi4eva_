@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#pragma warning(disable : 4996)
 #include <iostream>
 #include "Struct.h"
 
@@ -47,7 +49,7 @@ void Print_List(struct List* head) {
 	while (temp) {
 		printf("|%-13s", temp->Data.name, 20);
 		printf("|%-5c", temp->Data.typ);
-		printf("|%-11d",temp->Data.nom);
+		printf("|%-11d", temp->Data.nom);
 		printf("|%-12d|\n", temp->Data.colvo);
 		printf("|--------------------------------------------|\n");
 		temp = temp->next;
@@ -73,7 +75,7 @@ void add_first_element(struct List** head, int* Size) {
 void add_middle_element(struct List* head, int* Size, int Location) {
 	++(*Size);
 	information vedom;
-	 List* temp = head, * tail = temp;
+	List* temp = head, * tail = temp;
 	for (int i = 0; temp != NULL; i++) {                      //нужно ли до конца списка доходить------------------------------
 
 		if (i == Location) {
@@ -114,7 +116,7 @@ void add_last_element(struct List* head, int* Size) {
 	temp->next = NULL;
 }
 
-void free_first_element(struct List** head, int* Size) {           //  рекурсивно?
+void free_first_element(struct List** head, int* Size) {     
 	if (*Size <= 0) { return; }; --(*Size);
 
 	struct List* temp = *head;
@@ -125,12 +127,13 @@ void free_middle_element(struct List* head, int* Size, int Location) {
 	if (*Size <= 0) { return; };//если список пуст-- удаление невозможно
 	--(*Size);
 	struct List* temp = head, * tail = temp;
-	for (int i = 0; temp != NULL; i++)                              //нужно ли до конца списка доходить------------------------------
+	for (int i = 0; temp != NULL; i++)                             
 	{
 		if (i == Location) {
 			tail->next = temp->next;
 			free(temp);
 			temp = tail->next;
+			return;
 		}
 		else {
 			{
@@ -261,7 +264,7 @@ void Free_List(struct List** head) {
 
 information Rand() {       //	Ввод случайным образом //  заполнение  элеммента структуры vedom. 
 	information vedom;
-	vedom = Rand_Name(vedom);//Ввод рандомайзером
+	vedom = Rand_Name(vedom);//Ввод рандомайзером}
 	vedom.typ = 'A' + rand() % ('Z' - 'A');
 	vedom.nom = rand() % 1123;
 	vedom.colvo = rand() % 100 + 1;
@@ -269,12 +272,17 @@ information Rand() {       //	Ввод случайным образом //  заполнение  элеммента с
 	return vedom;
 }
 
-information Rand_Name(information vedom) { // Рандомный Name  для  vedom.name
-	char masname[20][20] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY",
-		"BROM-6", "TURP-08", "GHJ-0", "BERMUDO","ST", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12",  "CGU-12K" };
+information Rand_Name(information vedom) { //  vedom.name
+	/*char masname[20][20] = { "RT-11-24", "TRU4", "MNU-8", "OP-20", "P", "BORR", "POR-H", "BUTMB-K", "PTK", "RTY",
+		"BROM-6", "TURP-08", "GHJ-0", "BERMUDO","ST", "PRTYMB-2", "NO-3", "YIR-15", "CGU-RT-12",  "CGU-12K" };*/
 	int Randsign = rand() % 20;
-	strcpy_s(vedom.name, masname[Randsign]);
-	
+
+	FILE* file = NULL;
+	file = fopen("Rand_name.dat", "rb");
+	fseek(file, Randsign* sizeof(information), SEEK_SET);
+	fread(vedom.name, sizeof(information), 1, file);
+	fclose(file);
+
 	return vedom;
 }
 void clearStdIn() { // Очищение буфера Stdin
