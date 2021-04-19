@@ -140,9 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Creation.cpp" />
-    <ClCompile Include="Function.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Sobol_Lab.cpp" />
+    <ClCompile Include="Search_by_Criterion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Function.h" />

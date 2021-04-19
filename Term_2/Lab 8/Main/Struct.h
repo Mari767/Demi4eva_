@@ -1,14 +1,13 @@
 #pragma once
 #ifndef STRUCT_H_
 #define STRUCT_H_
+#define _CRT_SECURE_NO_WARNINGS
 #define M 20
-#include <iostream>
 
-using namespace std;
 struct information {
 	char name[M] = "";     //Обозначение
 	char typ;        //Тип
-	float nom;       //Номинал
+	int nom;       //Номинал
 	int colvo;       //Количество
 	short sort;      //Длинна строки(для сортировки)
 };
