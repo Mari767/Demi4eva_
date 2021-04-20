@@ -34,8 +34,8 @@ struct List* Creation_List(int* Size) {
 	return head;
 }
 
-void Print_List(struct List* head) {
-	struct List* temp = head;
+void Print_List( List* head) {
+	 List* temp = head;
 	if (head == NULL) {
 		printf("Список пуст.\n");
 		return;
@@ -57,10 +57,10 @@ void Print_List(struct List* head) {
 	printf("\n\n");
 }
 
-void add_first_element(struct List** head, int* Size) {
+void add_first_element( List*& head, int* Size) {
 	++(*Size);
 	information vedom;
-	struct List* temp = (struct List*)malloc(sizeof(struct List));
+	 List* temp = (struct List*)malloc(sizeof(struct List));
 
 	vedom = Rand();
 	strcpy_s(temp->Data.name, vedom.name);
@@ -69,14 +69,14 @@ void add_first_element(struct List** head, int* Size) {
 	temp->Data.nom = vedom.nom;
 	temp->Data.sort = 0;
 
-	temp->next = *head;
-	*head = temp;
+	temp->next = head;
+	head = temp;
 }
-void add_middle_element(struct List* head, int* Size, int Location) {
+void add_middle_element( List* head, int* Size, int Location) {
 	++(*Size);
 	information vedom;
 	List* temp = head, * tail = temp;
-	for (int i = 0; temp != NULL; i++) {                      //нужно ли до конца списка доходить------------------------------
+	for (int i = 0; temp != NULL; i++) {                     
 
 		if (i == Location) {
 			tail = temp;
@@ -97,10 +97,10 @@ void add_middle_element(struct List* head, int* Size, int Location) {
 		}
 	}
 }
-void add_last_element(struct List* head, int* Size) {
+void add_last_element( List* head, int* Size) {
 	++(*Size);
 	information vedom;
-	struct List* temp = head, * tail = NULL;
+	 List* temp = head, * tail = NULL;
 	while (temp) {
 		tail = temp;
 		temp = temp->next;
@@ -116,38 +116,39 @@ void add_last_element(struct List* head, int* Size) {
 	temp->next = NULL;
 }
 
-void free_first_element(struct List** head, int* Size) {     
+void free_first_element( List*& head, int* Size) {     
 	if (*Size <= 0) { return; }; --(*Size);
 
-	struct List* temp = *head;
-	*head = temp->next;
+	 List* temp = head;
+	head = temp->next;
 	free(temp);
 }
-void free_middle_element(struct List* head, int* Size, int Location) {
+void free_middle_element( List* head, int* Size, int Location) {
 	if (*Size <= 0) { return; };//если список пуст-- удаление невозможно
 	--(*Size);
-	struct List* temp = head, * tail = temp;
+	 List* temp = head, * tail = temp;
 	for (int i = 0; temp != NULL; i++)                             
 	{
-		if (i == Location) {
+		if (i == Location)
+		{
 			tail->next = temp->next;
 			free(temp);
 			temp = tail->next;
 			return;
 		}
-		else {
-			{
-				tail = temp;
-				temp = temp->next;
-			}
+		else 
+		{	
+			tail = temp;
+			temp = temp->next;
+			
 		}
 	}
 }
-void free_last_element(struct List* head, int* Size) {
+void free_last_element( List* head, int* Size) {
 	if (*Size <= 0) { return; };//если список пуст-- удаление невозможно
 	--(*Size);
 
-	struct List* temp = head, * tail = NULL;
+    List* temp = head, * tail = NULL;
 	while (temp->next) {
 		tail = temp;
 		temp = temp->next;
@@ -185,7 +186,7 @@ void Sort(struct List* head) {
 	return;
 }
 
-void Recording_List_to_FILE(struct List* head, char* name) {
+void Recording_List_to_FILE( List* head, char* name) {
 	if (head == NULL) {
 		printf("Список пуст.\n");
 		return;
@@ -195,7 +196,7 @@ void Recording_List_to_FILE(struct List* head, char* name) {
 	if (file == NULL) {
 		exit(0);
 	}
-	struct List* temp = head, * tail = NULL;
+	 List* temp = head, * tail = NULL;
 	while (temp) {
 		fprintf(file, "%s %c %d %d\n", temp->Data.name, temp->Data.typ, temp->Data.nom, temp->Data.colvo);
 		tail = temp;
@@ -252,13 +253,13 @@ struct List* Creation_New_List_from_File(char* name, int* Size) {
 	return head;
 }
 
-void Free_List(struct List** head) {
-	struct List* temp = *head;
+void Free_List( List*& head) {
+	 List* temp = head;
 	while (temp)
 	{
-		*head = (*head)->next;
+		head =head->next;
 		free(temp);
-		temp = *head;
+		temp = head;
 	}
 }
 

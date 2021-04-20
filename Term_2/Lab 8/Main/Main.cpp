@@ -1,15 +1,6 @@
 ﻿//ЛАБОРАТОРНАЯ РАБОТА № 8 Однонаправленные списки
 //Используя наработки ЛР №2 организовать работу со списком по следующему МЕНЮ :
-//1.  Создание списка.
-//2.  Печать списка.
-//3.  Поиск по критерию(осуществить выбор критерия).
-//4.  Добавление элемента(в любое заданное место).
-//5.  Удаление любого элемента.
-//6. Сортировка.
-//7.  Запись списка в файл.
-//8.  Создание нового списка из файла.
-//9.  Выход из программы.
-//Все в отдельных функциях, с макроопределениями и раздельной компиляцией.
+
 //#define _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS 
 #pragma warning(disable : 4996)
@@ -109,7 +100,7 @@ int main() {
 			scanf_s("%d", &Location);
 
 			if (Location == 0) {
-				add_first_element(&head,  &Size);
+				add_first_element(head,  &Size);
 			}
 			else if (Location > 0 && Location < Size) {
 				add_middle_element(head,  &Size, Location);
@@ -133,7 +124,7 @@ int main() {
 				break;
 			}
 			if (Location == 0) {
-				free_first_element(&head, &Size);
+				free_first_element(head, &Size);
 			}
 			else if (Location > 0 && Location < Size - 1) {
 				free_middle_element(head, &Size, Location);
@@ -166,12 +157,12 @@ int main() {
 				printf("Файл пуст. Создание нового списка из файла невозможно.\n");
 				break;
 			}
-			Free_List(&head);
+			Free_List(head);
 			Size = 0;
 			head = Creation_New_List_from_File(name, &Size);
 			break;
 		case 9:    // Выход из программы.
-			Free_List(&head);
+			Free_List(head);
 			break;
 		default:
 			printf("Некорректный ответ. Попробуйте ещй раз.\n");
