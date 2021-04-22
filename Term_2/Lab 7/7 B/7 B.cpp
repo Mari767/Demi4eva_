@@ -2,11 +2,12 @@
 //Записать в файл(f1) весь массив(mas1)10 чисел.
 //Считать поэлементно в другой массив и найти сумму четных(fread(), fwrite()).
 
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <stdio.h>
 #include "Function.h"
-#define _CRT_SECURE_NO_WARNINGS 
-#pragma warning(disable : 4996)
+ 
+//#pragma warning(disable : 4996)
 
 int main() {
 	setlocale(LC_ALL, "ru");

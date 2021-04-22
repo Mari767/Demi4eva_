@@ -3,7 +3,6 @@
 
 //#define _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS 
-#pragma warning(disable : 4996)
 #include "Function.h"
 #include "Struct.h"
 #include <iostream>
