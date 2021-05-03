@@ -52,10 +52,10 @@ int main(bool is_menu)
 	racket.setSize({ Racket_Width, Racket_Height });
 	racket.setOrigin(Racket_Width / 2.f, Racket_Height / 2.f);
 	Figure racket_direction{ 0, 0, 0, 0, 0, 0 };
-
+	//C:\Users\mdemi\source\repos\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images
 	// My bricks
 	Texture image;
-	image.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\My_experience\\Курсовая работа\\Images\\bricks.jpg");
+	image.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\bricks.jpg");
 	Sprite brick;
 	brick.setTexture(image);
 

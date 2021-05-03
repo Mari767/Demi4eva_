@@ -220,22 +220,22 @@ bool  Menu(RenderWindow& window, bool player_lose) {
 	Image  image_Start, image_Rules, image_Exit, image_try_again;
 	Texture texture_Background, texture_button_Start, texture_button_Rules, texture_button_Exit, texture_window_rules, texture_button_try_again;
 
-	texture_Background.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\My_experience\\Курсовая работа\\Images\\background.png");
-	texture_window_rules.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\My_experience\\Курсовая работа\\Images\\window_rules.png");
+	texture_Background.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\background.png");
+	texture_window_rules.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\window_rules.png");
 
-	image_Start.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\My_experience\\Курсовая работа\\Images\\start.png");
+	image_Start.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\start.png");
 	image_Start.createMaskFromColor(Color(255, 255, 255));
 	texture_button_Start.loadFromImage(image_Start);
 
-	image_Exit.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\My_experience\\Курсовая работа\\Images\\exit.png");
+	image_Exit.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\exit.png");
 	image_Exit.createMaskFromColor(Color(255, 255, 255));
 	texture_button_Exit.loadFromImage(image_Exit);
 
-	image_Rules.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\My_experience\\Курсовая работа\\Images\\rules.png");
+	image_Rules.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\rules.png");
 	image_Rules.createMaskFromColor(Color(255, 255, 255));
 	texture_button_Rules.loadFromImage(image_Rules);
 
-	image_try_again.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\My_experience\\Курсовая работа\\Images\\try again.png");
+	image_try_again.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\try again.png");
 	image_try_again.createMaskFromColor(Color(255, 255, 255));
 	texture_button_try_again.loadFromImage(image_try_again);
 
