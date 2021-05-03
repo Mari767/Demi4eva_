@@ -299,7 +299,7 @@ bool  Menu(RenderWindow& window, bool player_lose) {
 
 		if (IntRect(280, 80, 250, 100).contains(Mouse::getPosition(window))) { Button_Start.setColor(Color::Blue); user_choice = 1; }
 		if (IntRect(280, 210, 250, 100).contains(Mouse::getPosition(window))) { Button_Rules.setColor(Color::Blue); user_choice = 2; }
-		if (IntRect(200, 340, 250, 100).contains(Mouse::getPosition(window))) { Button_Exit.setColor(Color::Blue);  user_choice = 3; }
+		if (IntRect(280, 340, 250, 100).contains(Mouse::getPosition(window))) { Button_Exit.setColor(Color::Blue);  user_choice = 3; }
 
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{

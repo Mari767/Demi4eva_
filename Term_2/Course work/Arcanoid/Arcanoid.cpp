@@ -10,10 +10,10 @@ int main(bool is_menu)
 	int Score_by_destroying_bricks = 0;
 
 	//char Map_Current_Level[Height_Map][Width_Map];
-	char** Map_Current_Level = (char**)malloc(Height_Map * sizeof(char*));
+	char** Map_Current_Level = new char*[Height_Map];
 	/* выделение памяти для каждой строки и заполнение массива указателей */
 	for (int i = 0; i < Height_Map; i++) {
-		*(Map_Current_Level + i) = (char*)malloc(Width_Map * sizeof(char));
+		Map_Current_Level[i] =  new char [Width_Map];
 	}
 
 	// Загрузка карты и заполнение структуры блоков
@@ -52,7 +52,7 @@ int main(bool is_menu)
 	racket.setSize({ Racket_Width, Racket_Height });
 	racket.setOrigin(Racket_Width / 2.f, Racket_Height / 2.f);
 	Figure racket_direction{ 0, 0, 0, 0, 0, 0 };
-	//C:\Users\mdemi\source\repos\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images
+
 	// My bricks
 	Texture image;
 	image.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\Images\\bricks.jpg");
@@ -60,7 +60,7 @@ int main(bool is_menu)
 	brick.setTexture(image);
 
 	Font font;//шрифт 
-	font.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\ITCKRIST.ttf");
+	font.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\ITCKRIST.ttf");
 	Text text("", font, 18);
 	text.setFillColor(Color(200, 191, 231));
 	text.setStyle(Text::Bold);
@@ -179,7 +179,7 @@ int main(bool is_menu)
 
 		if (Health == 0) {
 			player_lose = true;
-			text_action.setString("You lose(((");
+			text_action.setString("You losed(((");
 			while (true) {
 				window.draw(text_action);
 				window.display();
@@ -188,7 +188,7 @@ int main(bool is_menu)
 			break;
 		}
 		if (LvL == 4) {
-			text_action.setString("You win!");
+			text_action.setString("You won!");
 			while (true) {
 				window.draw(text_action);
 				window.display();
@@ -224,9 +224,9 @@ int main(bool is_menu)
 
 	// удаление двумерного динамического массива char (карта)
 	for (int i = 0; i < Height_Map; i++) {
-		free(*(Map_Current_Level + i));
+	      delete [] Map_Current_Level[i];
 	}
-	free(Map_Current_Level);
+	delete [] Map_Current_Level;
 
 	return 0;
 }
