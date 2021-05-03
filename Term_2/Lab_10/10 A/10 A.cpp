@@ -3,30 +3,37 @@
 
 #include <iostream>
 
-class Square {
+class Figure {
 
 private:
-	int Square_figure;
+
+	int figure_square;
 
 public:
 
-	void Calculate(int valueX, int valueY = 1) {
-
-		if (valueY == 1) {
-			valueY = valueX;
-		}
-		Square_figure = valueX * valueY;
-		printf("Square = %d\n", Square_figure);
-	}
+	void Square(int valueX, int valueY = 0);
 };
+
+ void Figure::Square(int valueX, int valueY) {
+
+	if (valueY == 0) 
+	{
+		valueY = valueX;
+	}
+
+	figure_square = valueX * valueY;
+	printf("Square = %d\n", figure_square);
+}
+
+
 
 int main() {
 
-	Square kvadr;
-	kvadr.Calculate(10);
+	Figure rectangle;
+	rectangle.Square(5, 8);
 
-	Square rectangle;
-	rectangle.Calculate(5, 8);
+	Figure kvadr;
+	kvadr.Square(10);
 
 	return 0;
 }
