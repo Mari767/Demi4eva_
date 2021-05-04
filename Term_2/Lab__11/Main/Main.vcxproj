@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c10b343a-56dc-4cf6-8b3a-3e403c923776}</ProjectGuid>
-    <RootNamespace>My11D</RootNamespace>
+    <ProjectGuid>{106da67c-4160-42af-8898-974b8be81165}</ProjectGuid>
+    <RootNamespace>Main</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,13 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="11 D.cpp" />
-    <ClCompile Include="Dog.cpp" />
-    <ClCompile Include="Master.cpp" />
+    <ClCompile Include="class_Information.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Dog.h" />
-    <ClInclude Include="Master.h" />
+    <ClInclude Include="class_Information.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

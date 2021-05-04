@@ -3,6 +3,7 @@
 #define _USE_MATH_DEFINES 
 #include <cmath>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class Figure {
@@ -10,7 +11,7 @@ class Figure {
 public:
 	Figure() :m_square(0) {}
 	void Square(int a = 1, int b = 1, int c = 1);
-	void Print() { cout << "Square = " << m_square << endl; }
+	void Print() { cout << "Square = " << setprecision(3)<< m_square << endl; }
 };
 
 void Figure::Square(int a, int b, int c)
