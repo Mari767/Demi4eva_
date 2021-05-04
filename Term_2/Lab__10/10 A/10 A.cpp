@@ -14,9 +14,9 @@ public:
 	void Square(int valueX, int valueY = 0);
 };
 
- void Figure::Square(int valueX, int valueY) {
+void Figure::Square(int valueX, int valueY) {
 
-	if (valueY == 0) 
+	if (valueY == 0)
 	{
 		valueY = valueX;
 	}
