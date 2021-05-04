@@ -7,7 +7,7 @@
 //Ц функци€, котора€ возвращает сумму и произведение переменных(передача параметров через ссылки);
 //Ц вывод результатов.
 
-#include <iostream>
+#include <iostream> 
 using namespace std;
 
 class Point {
