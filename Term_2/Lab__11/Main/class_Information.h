@@ -17,7 +17,4 @@ public:
 	void get_inform(string& name, char& typ, float& nom, int& colvo);
 	void show_inform();
 };
-
-
-
 #endif
