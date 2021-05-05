@@ -24,7 +24,6 @@ public:
 	MASTER(MASTER& other);
 
 	void setName(string name);
-	//void setID(int ID);
 	void setColvo_dogs(int colvo_dogs);
 	void setDog_of_master_with_creation(string nickname, int weight, int age, int number);
 	void creation_dog(int number);
@@ -43,6 +42,5 @@ public:
 
 	void Print();
 };
- //int MASTER::m_ID = 218;
 
 #endif // !MASTER_H

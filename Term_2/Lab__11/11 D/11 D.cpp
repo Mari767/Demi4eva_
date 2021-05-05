@@ -16,15 +16,15 @@
 int main() {
 	setlocale(LC_ALL, "ru");
 
-	MASTER first("Джейс Вейланд Моргерштерн", 32, 2);
-	first.setDog_of_master_with_creation("Chery", 10, 9, 1);
-	first.setDog_of_master_with_creation("Kira", 5, 2, 2);
+	MASTER first("Джейс Вейд Моргерштерн", 32, 2);
+	first.setDog_of_master_with_creation("Chery", 8, 9, 1);
+	first.setDog_of_master_with_creation("Kira ", 5, 2, 2);
 	first.Print();
 
 	MASTER second;
-	second.setName("Тесса Грей Фэирчайлд ");
+	second.setName("Тесса Грей Фэирчайлд  ");
 	second.setColvo_dogs(1);
-	second.setDog_nickname("Jonathan");
+	second.setDog_nickname("Jora ");
 	second.setDog_weight(3);
 	second.setDog_age(6);
 	second.Print();

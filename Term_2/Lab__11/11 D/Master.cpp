@@ -73,7 +73,7 @@ int MASTER::getDog_age() {
 }
 
 void MASTER::Print() {
-	cout << "№" << m_count << "   ФИО: " << m_name << "\t  ID клуба " << m_ID << "\t" << m_colvo_dogs << " собак\n";
+	cout << "№" << m_count << "   ФИО: " << m_name << "      ID клуба " << m_ID << "     " << "кол-во собак: " << m_colvo_dogs << "\n";
 	for (int i = 0; i < m_colvo_dogs; i++) {
 		m_dog_of_master[i].Print();
 	}cout << endl;
