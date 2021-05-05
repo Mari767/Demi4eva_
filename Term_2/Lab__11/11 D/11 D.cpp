@@ -23,7 +23,6 @@ int main() {
 
 	MASTER second;
 	second.setName("Тесса Грей Фэирчайлд ");
-	second.setID(51);
 	second.setColvo_dogs(1);
 	second.setDog_nickname("Jonathan");
 	second.setDog_weight(3);

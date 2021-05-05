@@ -13,7 +13,7 @@ private:
 
 	static int m_count;
 	string m_name;
-	int m_ID;
+	const int m_ID = 218;
 	int m_colvo_dogs;
 	DOG m_dog_of_master[Max_colvo_dogs];
 
@@ -24,7 +24,7 @@ public:
 	MASTER(MASTER& other);
 
 	void setName(string name);
-	void setID(int ID);
+	//void setID(int ID);
 	void setColvo_dogs(int colvo_dogs);
 	void setDog_of_master_with_creation(string nickname, int weight, int age, int number);
 	void creation_dog(int number);
@@ -32,7 +32,7 @@ public:
 	void setDog_weight(int weight);
 	void setDog_age(int age);
 
-	// int getCount();
+	int getCount();
 	string getName();
 	int getID();
 	int getColvo_dogs();
@@ -43,4 +43,6 @@ public:
 
 	void Print();
 };
+ //int MASTER::m_ID = 218;
+
 #endif // !MASTER_H
