@@ -20,6 +20,7 @@ private:
 public:
 
 	MASTER();
+	~MASTER() {}
 	MASTER(string name, int ID, int colvo_dogs);
 	MASTER(MASTER& other);
 

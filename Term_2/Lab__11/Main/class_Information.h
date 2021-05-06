@@ -12,7 +12,10 @@ class Information {
 	int m_colvo;
 
 public:
-
+	Information();
+	~Information() {}
+	Information(string name, char typ, float nom, int colvo);
+	Information(Information& other);
 	void set_inform(string name, char typ, float nom, int colvo);
 	void get_inform(string& name, char& typ, float& nom, int& colvo);
 	void show_inform();

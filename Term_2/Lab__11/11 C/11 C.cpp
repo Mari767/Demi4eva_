@@ -12,12 +12,21 @@ class Complex {
 	float m_r;  // вещественная(r)
 	float m_m;  // мнимая(m)
 public:
-	void setR(int r) { m_r = r; }
-	void setM(int m) { m_m = m; }
-	void addR(int r) { m_r += r; }
-	void addM(int m) { m_m += m; }
-	void sum(int r, int m) { m_r += r; m_m += m; }
-	void print() { cout <<"Kомплексное число: "<< m_r << " + " << m_m <<"i\n\n"; }
+	Complex() :m_r(0), m_m(0) {}
+	~Complex() {}
+	Complex(float r, float m) :m_r(r), m_m(m) {}
+	Complex(Complex& other) { this->m_r = other.m_r;  this->m_m = other.m_m; }
+	void setR(float r) { m_r = r; }
+	void setM(float m) { m_m = m; }
+	void addR(float r) { m_r += r; }
+	void addM(float m) { m_m += m; }
+	void sum(float r, float m) { m_r += r; m_m += m; }
+	void print() {
+		if (m_m >= 0)
+			cout << "Kомплексное число: " << m_r << " + " << m_m << "i\n\n";
+		else
+			cout << "Kомплексное число: " << m_r << " " << m_m << "i\n\n";
+	}
 
 };
 

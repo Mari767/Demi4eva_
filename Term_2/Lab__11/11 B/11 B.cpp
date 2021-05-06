@@ -10,6 +10,10 @@ class Figure {
 	float m_square;
 public:
 	Figure() :m_square(0) {}
+	~Figure(){}
+	Figure(float square) :m_square(square) {}
+	Figure(Figure& other) { this->m_square = other.m_square; }
+
 	void Square(int a = 1, int b = 1, int c = 1);
 	void Print() { cout << "Square = " << setprecision(3)<< m_square << endl; }
 };

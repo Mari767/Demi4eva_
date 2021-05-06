@@ -10,6 +10,7 @@ class DOG {
 	int m_age;
 public:
 	DOG();
+	~DOG(){}
 	DOG(string nickname, int weight, int age);
 	DOG(DOG& other);
 
