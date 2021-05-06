@@ -35,13 +35,6 @@ void Numbers::exchange_max_min_via_reference(int& value_A, int& value_B, int& va
 	int temp = *max;
 	*max = *min;
 	*min = temp;
-
-	//cout << value_A << "   " << value_B << "   " << value_C << endl;
-
-	//ref_max = ref_min;
-	//ref_min = max;
-	//cout << ref_max;
-
 }
 
 void Numbers::exchange_max_min_via_pointer(int* value_A, int* value_B, int* value_C) {
