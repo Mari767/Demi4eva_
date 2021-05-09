@@ -6,7 +6,7 @@ int main(bool is_menu)
 {
 	// Изначальные значения и их установление
 	int LvL = 3;
-	int Health = 10;
+	int Health = 3;
 	int Score_by_destroying_bricks = 0;
 
 	//char Map_Current_Level[Height_Map][Width_Map];
@@ -92,8 +92,6 @@ int main(bool is_menu)
 			if (event.type == Event::Closed) { window.close(); break; }
 		}
 
-		
-
 		// Нажатие Space Разрешение шару двигаться = начало движения шара
 		if (is_Space_Pressed_for_moving_ball) {
 			ball_direction.x = -Ball_Speed;
@@ -105,7 +103,7 @@ int main(bool is_menu)
 		{
 			ball.setPosition(racket.getPosition().x, racket.getPosition().y - 30);
 
-			//// Нажатие клавиши Space = разрешение шару двигаться
+			// Нажатие клавиши Space = разрешение шару двигаться
 			if (Keyboard::isKeyPressed(Keyboard::Space)) {
 				are_ball_and_racket_moving_together = false;
 				is_Space_Pressed_for_moving_ball = true;
@@ -136,8 +134,9 @@ int main(bool is_menu)
 		// Шар отбивается и уничтожает блоки
 		// Блоки меняют цвет
 		// Счет очков
-		Intersection_Ball_With_Bricks(ball, ball_direction, Map_Current_Level, &Score_by_destroying_bricks, head);
-
+		if (head != 0) {
+			Intersection_Ball_With_Bricks(ball, ball_direction, Map_Current_Level, &Score_by_destroying_bricks, head);
+		}
 		//переход на другой уровень или  reatart/выход  после последнего уровня
 		if (All_Bricks_Destroyed(Map_Current_Level, &LvL_is_up))
 		{
