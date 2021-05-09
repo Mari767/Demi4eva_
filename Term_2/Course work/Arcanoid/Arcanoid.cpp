@@ -92,21 +92,7 @@ int main(bool is_menu)
 			if (event.type == Event::Closed) { window.close(); break; }
 		}
 
-		//переход на другой уровень или  reatart/выход  после последнего уровня
-		if (All_Bricks_Destroyed(Map_Current_Level, &LvL_is_up))
-		{
-			are_ball_and_racket_moving_together = true;
-			is_Space_Pressed_for_moving_ball = false;
-			if (LvL_is_up == true) {
-				LvL++;
-				Health = 3;
-				Rree_List_Bricks(head);
-
-				if (LvL == 4) { is_menu = true; }
-				else { LvL_Up(Map_Current_Level, LvL); head = Creation_List_Bricks(Map_Current_Level); }
-
-			}
-		}
+		
 
 		// Нажатие Space Разрешение шару двигаться = начало движения шара
 		if (is_Space_Pressed_for_moving_ball) {
@@ -152,6 +138,25 @@ int main(bool is_menu)
 		// Счет очков
 		Intersection_Ball_With_Bricks(ball, ball_direction, Map_Current_Level, &Score_by_destroying_bricks, head);
 
+		//переход на другой уровень или  reatart/выход  после последнего уровня
+		if (All_Bricks_Destroyed(Map_Current_Level, &LvL_is_up))
+		{
+			are_ball_and_racket_moving_together = true;
+			is_Space_Pressed_for_moving_ball = false;
+			if (LvL_is_up == true) {
+				Rree_List_Bricks(head);
+				LvL++;
+				if (LvL != 4) {
+
+					Health = 3;
+					LvL_Up(Map_Current_Level, LvL);
+					head = Creation_List_Bricks(Map_Current_Level);
+				}
+				if (LvL == 4) {
+					is_menu = true;
+				}
+			}
+		}
 		window.clear(Color::Black);
 
 		//Рисуем карту
@@ -172,6 +177,8 @@ int main(bool is_menu)
 				window.draw(brick);//рисуем квадратики на экран
 			}
 		}
+
+	
 
 		if (Health == 0 || LvL == 4) {
 			racket.setPosition(Playing_Field_Width / 2, Window_Height - 85);
@@ -195,12 +202,15 @@ int main(bool is_menu)
 		if (LvL == 4) {
 			text_action.setString("You won!");
 			while (true) {
+				window.clear(Color::Black);
+
 				window.draw(text_action);
 				window.draw(text_return_to_menu);
 				window.display();
-				if (Keyboard::isKeyPressed(Keyboard::Key::Escape)) { break; }
+				if (Keyboard::isKeyPressed(Keyboard::Key::Escape)) {
+					break; }
 			}
-			break;
+
 		}
 
 		// Ввод текущих показателей на экран в виде текста
