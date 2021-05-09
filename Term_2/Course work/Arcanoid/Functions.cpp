@@ -271,6 +271,14 @@ bool  Menu(RenderWindow& window, bool player_lose) {
 	Button_Exit.setPosition(280, 340);
 	Button_try_again.setPosition(280, 180);
 
+	Font font;
+	font.loadFromFile("C:\\Users\\mdemi\\source\\repos\\Mari767\\Demi4eva_\\Term_2\\Course work\\Arcanoid\\ITCKRIST.ttf");
+
+	Text text_return_to_menu("To get to the menu press the key Escape.", font, 26);
+	text_return_to_menu.setFillColor(Color(65, 44, 56));
+	text_return_to_menu.setStyle(Text::Bold);
+	text_return_to_menu.setPosition(120, Window_Height - 43);
+
 	bool is_Menu;
 	int user_choice = 0;
 
@@ -319,6 +327,7 @@ bool  Menu(RenderWindow& window, bool player_lose) {
 			if (user_choice == 2)
 			{
 				window.draw(Window_Rules);
+				window.draw(text_return_to_menu);
 				window.display();
 				while (!Keyboard::isKeyPressed(Keyboard::Escape));
 			}
