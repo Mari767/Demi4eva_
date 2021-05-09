@@ -5,19 +5,19 @@
 int main(bool is_menu)
 {
 	// Изначальные значения и их установление
-	int LvL = 1;
-	int Health = 3;
+	int LvL = 3;
+	int Health = 10;
 	int Score_by_destroying_bricks = 0;
 
 	//char Map_Current_Level[Height_Map][Width_Map];
-	char** Map_Current_Level = new char*[Height_Map];
+	char** Map_Current_Level = new char* [Height_Map];
 	/* выделение памяти для каждой строки и заполнение массива указателей */
 	for (int i = 0; i < Height_Map; i++) {
-		Map_Current_Level[i] =  new char [Width_Map];
+		Map_Current_Level[i] = new char[Width_Map];
 	}
 
 	// Загрузка карты и заполнение структуры блоков
-	LvL_Up(Map_Current_Level);
+	LvL_Up(Map_Current_Level, 3);
 	List_Bricks* head = NULL;
 	head = Creation_List_Bricks(Map_Current_Level);
 
@@ -71,6 +71,11 @@ int main(bool is_menu)
 	text_action.setStyle(Text::Bold);
 	text_action.setPosition(Window_Width / 2 - 120, Window_Height / 2 - 40);
 
+	Text text_return_to_menu("To get to the menu press the key Escape.", font, 26);
+	text_return_to_menu.setFillColor(Color(100, 67, 86));
+	//text_return_to_menu.setStyle(Text::Bold);
+	text_return_to_menu.setPosition(145, Window_Height - 55);
+
 	// Частота кадров
 	window.setFramerateLimit(70);
 
@@ -98,9 +103,8 @@ int main(bool is_menu)
 				Rree_List_Bricks(head);
 
 				if (LvL == 4) { is_menu = true; }
-				LvL_Up(Map_Current_Level, 3);
+				else { LvL_Up(Map_Current_Level, LvL); head = Creation_List_Bricks(Map_Current_Level); }
 
-				head = Creation_List_Bricks(Map_Current_Level);
 			}
 		}
 
@@ -182,6 +186,7 @@ int main(bool is_menu)
 			text_action.setString("You losed(((");
 			while (true) {
 				window.draw(text_action);
+				window.draw(text_return_to_menu);
 				window.display();
 				if (Keyboard::isKeyPressed(Keyboard::Key::Escape)) { break; }
 			}
@@ -191,6 +196,7 @@ int main(bool is_menu)
 			text_action.setString("You won!");
 			while (true) {
 				window.draw(text_action);
+				window.draw(text_return_to_menu);
 				window.display();
 				if (Keyboard::isKeyPressed(Keyboard::Key::Escape)) { break; }
 			}
@@ -224,9 +230,9 @@ int main(bool is_menu)
 
 	// удаление двумерного динамического массива char (карта)
 	for (int i = 0; i < Height_Map; i++) {
-	      delete [] Map_Current_Level[i];
+		delete[] Map_Current_Level[i];
 	}
-	delete [] Map_Current_Level;
+	delete[] Map_Current_Level;
 
 	return 0;
 }

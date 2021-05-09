@@ -1,7 +1,6 @@
 #include "Dog.h"
 
 DOG::DOG() : m_nickname(""), m_weight(0), m_age(0) {}
-DOG::~DOG(){}
 DOG::DOG(string nickname, int weight, int age) : m_nickname(nickname), m_weight(weight), m_age(age) {}
 DOG::DOG(DOG& other) {
 	this->m_nickname = other.m_nickname;
