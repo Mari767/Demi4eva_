@@ -5,7 +5,7 @@
 int main(bool is_menu)
 {
 	// Изначальные значения и их установление
-	int LvL = 3;
+	int LvL = 1;
 	int Health = 3;
 	int Score_by_destroying_bricks = 0;
 
@@ -17,7 +17,7 @@ int main(bool is_menu)
 	}
 
 	// Загрузка карты и заполнение структуры блоков
-	LvL_Up(Map_Current_Level, 3);
+	LvL_Up(Map_Current_Level, LvL);
 	List_Bricks* head = NULL;
 	head = Creation_List_Bricks(Map_Current_Level);
 

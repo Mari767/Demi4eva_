@@ -126,38 +126,37 @@ void Intersection_Ball_With_Bricks(CircleShape& ball, Figure& dir_ball, char** M
 
 
 		//For List and Destroying bricks
-
-		//(temp->colvo_touch)++;
+		(temp->colvo_touch)++;
 		++(*Score_by_destroying_bricks);
 
-		temp->color = ' ';
-			*(*(Map_Current_Level + list_y) + list_x) = ' ';
+		/*temp->color = ' ';
+			*(*(Map_Current_Level + list_y) + list_x) = ' ';*/
 
 
-		//if (temp->colvo_touch == temp->score) {
-		//	*(*(Map_Current_Level + list_y) + list_x) = ' ';  temp->color = ' '; temp->color = ' ';
-		//}
-		//// Color change depending on color
-		//if (temp->color == 'p')
-		//{
-		//	*(*(Map_Current_Level + list_y) + list_x) = 'y';
-		//	temp->color = 'y';
-		//}
-		//else if (temp->color == 'u')
-		//{
-		//	*(*(Map_Current_Level + list_y) + list_x) = 'p';
-		//	temp->color = 'p';
-		//}
-		//else if (temp->color == 'g')
-		//{
-		//	*(*(Map_Current_Level + list_y) + list_x) = 's';
-		//	temp->color = 's';
-		//}
-		//else if (temp->color == 's')
-		//{
-		//	*(*(Map_Current_Level + list_y) + list_x) = 'y';
-		//	temp->color = 'y';
-		//}
+		if (temp->colvo_touch == temp->score) {
+			*(*(Map_Current_Level + list_y) + list_x) = ' ';  temp->color = ' '; temp->color = ' ';
+		}
+		// Color change depending on color
+		if (temp->color == 'p')
+		{
+			*(*(Map_Current_Level + list_y) + list_x) = 'y';
+			temp->color = 'y';
+		}
+		else if (temp->color == 'u')
+		{
+			*(*(Map_Current_Level + list_y) + list_x) = 'p';
+			temp->color = 'p';
+		}
+		else if (temp->color == 'g')
+		{
+			*(*(Map_Current_Level + list_y) + list_x) = 's';
+			temp->color = 's';
+		}
+		else if (temp->color == 's')
+		{
+			*(*(Map_Current_Level + list_y) + list_x) = 'y';
+			temp->color = 'y';
+		}
 		// Look at bricks position
 		Figure brick;
 		brick.left = list_x * Brick_Width;
